@@ -1,0 +1,20 @@
+{
+  "name": "mach-runs",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/duckie4u/March-runs#readme",
+  "bugs": {
+    "url": "https://github.com/duckie4u/March-runs/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/duckie4u/March-runs.git"
+  },
+  "license": "ISC",
+  "author": "Maria Paula Duque Jiménez",
+  "type": "commonjs",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
