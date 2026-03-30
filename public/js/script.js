@@ -17,37 +17,65 @@ if (mobileVideo) mobileVideo.addEventListener("ended", () => handleVideoEnd("scr
 // --- ANIMACIONES GSAP ---
 gsap.registerPlugin(ScrollTrigger);
 
-const path = document.querySelector("#animatedArc");
-
-// 1. Calculamos la longitud real de la ruta SVG
-const pathLength = path.getTotalLength();
-
-// 2. Configuramos el estado inicial de la línea (oculta)
-gsap.set(path, {
-  strokeDasharray: pathLength,
-  strokeDashoffset: pathLength
-});
-
-// 3. Animación de la línea dibujándose al hacer scroll
-gsap.to(path, {
-  strokeDashoffset: 0,
-  ease: "none",
-  scrollTrigger: {
-    trigger: "#proceso",
-    start: "top center", // Empieza cuando la sección 'proceso' llega al centro
-    end: "center center", // Termina de dibujarse justo cuando llegas al coin
-    scrub: 1 // Suaviza la animación de retroceso/avance
+// Esperar a que el DOM esté listo
+window.addEventListener('load', () => {
+  const path = document.querySelector("#animatedArc");
+  
+  if (path) {
+    // Calcular la longitud real del path
+    const pathLength = path.getTotalLength();
+    
+    // Configurar estado inicial
+    gsap.set(path, {
+      strokeDasharray: pathLength,
+      strokeDashoffset: pathLength
+    });
+    
+    // Animar el arco con scroll suave
+    gsap.to(path, {
+      strokeDashoffset: 0,
+      ease: "none",
+      scrollTrigger: {
+        trigger: "#proceso",
+        start: "top 20%",
+        end: "bottom 50%",
+        scrub: 0.5, // Suavizar animación
+        invalidateOnRefresh: true // Recalcular si cambia el viewport
+      }
+    });
   }
 });
 
-// 4. Animación del Coin y el texto
+// Animaciones de contenido con mejor timing
 gsap.from(".primer", {
   opacity: 0,
-  y: 50,
-  duration: 1,
+  y: 30,
+  duration: 0.8,
   scrollTrigger: {
     trigger: ".primer",
-    start: "top 80%", // Aparece cuando el row está al 80% de la ventana
+    start: "top 85%",
+    toggleActions: "play none none reverse"
+  }
+});
+
+gsap.from(".segundo", {
+  opacity: 0,
+  y: 30,
+  duration: 0.8,
+  scrollTrigger: {
+    trigger: ".segundo",
+    start: "top 85%",
+    toggleActions: "play none none reverse"
+  }
+});
+
+gsap.from(".tercer", {
+  opacity: 0,
+  y: 30,
+  duration: 0.8,
+  scrollTrigger: {
+    trigger: ".tercer",
+    start: "top 85%",
     toggleActions: "play none none reverse"
   }
 });

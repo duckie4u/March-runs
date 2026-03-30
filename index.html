@@ -32,42 +32,76 @@
 
     <section id="proceso" class="scroll-animation-section position-relative">
         
-        <svg class="animated-line-svg position-absolute top-0 start-0 w-100 h-100" preserveAspectRatio="none" viewBox="0 0 1200 800">
+        <svg class="animated-line-svg" viewBox="0 0 1200 2400" preserveAspectRatio="xMidYMid meet">
             <defs>
                 <filter id="neonGlow">
-                    <feGaussianBlur stdDeviation="5" result="coloredBlur"/>
+                    <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
                     <feMerge>
                         <feMergeNode in="coloredBlur"/>
                         <feMergeNode in="SourceGraphic"/>
                     </feMerge>
                 </filter>
             </defs>
-            <path id="animatedArc" d="M -50 50 Q 600 750 1050 550" fill="none" stroke="#0ff" stroke-width="5" stroke-linecap="round" filter="url(#neonGlow)"/>
+            <!-- Arco suave y consistente: curva única y predecible -->
+            <path id="animatedArc" 
+                d="M 100 200 C 200 300, 400 400, 600 500 C 800 600, 900 700, 1000 900 C 1050 1000, 1100 1200, 1050 1400 C 1000 1600, 800 1800, 600 1900 C 400 2000, 200 2100, 100 2200" 
+                fill="none" stroke="#0ff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" filter="url(#neonGlow)"/>
         </svg>
 
         <div class="container-fluid position-relative" style="z-index: 2;">
             
-            <div class="row">
-                <div class="col-12 espacio-grande"></div>
-            </div>
+            <div class="row"><div class="col-12 espacio-grande"></div></div>
 
             <div class="row primer g-4 align-items-center px-4 px-md-5">
                 <div class="col-12 col-md-6 col-lg-5">
                     <h2 class="text-light display-5 fw-bold">Your partner in success.</h2>
                     <p class="text-light fs-5">Llevamos tus ideas al siguiente nivel.</p>
                 </div> 
-                
                 <div class="d-none d-lg-block col-lg-2"></div> 
-                
                 <div class="col-12 col-md-6 col-lg-5 d-flex justify-content-center justify-content-md-end">
-                    <img src="public/assets/coin-1.png" alt="Coin" class="img-fluid coin-logo">
+                    <img src="public/assets/coin-1.png" alt="Coin 1" class="img-fluid coin-logo coin-1">
                 </div>  
             </div>
 
-            <div class="row">
-                <div class="col-12 espacio-inferior"></div>
+            <div class="row"><div class="col-12 espacio-grande"></div></div>
+
+            <div class="row segundo g-4 align-items-center px-4 px-md-5">
+                <div class="col-12 col-md-6 col-lg-5 d-flex justify-content-center justify-content-md-start order-2 order-md-1">
+                    <img src="public/assets/coin-2.png" alt="Coin 2" class="img-fluid coin-logo coin-2">
+                </div>  
+                <div class="d-none d-lg-block col-lg-2 order-md-2"></div> 
+                <div class="col-12 col-md-6 col-lg-5 order-1 order-md-3">
+                    <h2 class="text-light display-5 fw-bold">Innovación constante.</h2>
+                    <p class="text-light fs-5">Cada detalle cuenta en la creación digital.</p>
+                </div> 
+            </div>
+
+            <div class="row"><div class="col-12 espacio-grande"></div></div>
+
+            <div class="row tercer g-4 align-items-center px-4 px-md-5">
+                <div class="col-12 col-md-6 col-lg-5">
+                    <h2 class="text-light display-5 fw-bold">Resultados únicos.</h2>
+                    <p class="text-light fs-5">Destaca con experiencias memorables.</p>
+                </div> 
+                <div class="d-none d-lg-block col-lg-2"></div> 
+                <div class="col-12 col-md-6 col-lg-5 d-flex justify-content-center justify-content-md-end">
+                    <img src="public/assets/coin-3.png" alt="Coin 3" class="img-fluid coin-logo coin-3">
+                </div>  
+            </div>
+
+            <div class="row"><div class="col-12 espacio-inferior"></div></div>
+        
+            <div class="row"><div class="col-12 espacio-grande"></div></div>
+
+            <div class="row tercer g-4 align-items-center px-4 px-md-5">
+                <div class="d-none d-lg-block col-lg-2"></div>  
+                <div class="d-lg-block col-lg-12">
+                    <img src="public/assets/coin-logo.png" alt="Coin Logo" class="img-fluid coin-logo coin-3">
+                </div> 
+                <div class="d-none d-lg-block col-lg-2"></div> 
             </div>
         </div>
+        
     </section>
 
     <script src="public/js/script.js"></script>
