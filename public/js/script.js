@@ -1,6 +1,7 @@
-  function freezeVideo(scrollDownId) {
+// Lógica de video inicial
+function freezeVideo(scrollDownId) {
     const scrollElement = document.getElementById(scrollDownId);
-    scrollElement.classList.add("show");
+    if(scrollElement) scrollElement.classList.add("show");
 }
 
 function handleVideoEnd(scrollDownId) {
@@ -10,39 +11,43 @@ function handleVideoEnd(scrollDownId) {
 const desktopVideo = document.querySelector(".d-none.d-md-block video");
 const mobileVideo = document.querySelector(".d-block.d-md-none video");
 
-if (desktopVideo) {
-    desktopVideo.addEventListener("ended", () => handleVideoEnd("scrollDownPc"));
-}
-if (mobileVideo) {
-    mobileVideo.addEventListener("ended", () => handleVideoEnd("scrollDownMovil"));
-}
+if (desktopVideo) desktopVideo.addEventListener("ended", () => handleVideoEnd("scrollDownPc"));
+if (mobileVideo) mobileVideo.addEventListener("ended", () => handleVideoEnd("scrollDownMovil"));
 
+// --- ANIMACIONES GSAP ---
 gsap.registerPlugin(ScrollTrigger);
 
-// Animación de arco de luz: se dibuja cuando scrolleamos hacia él
-gsap.to("#animatedArc", {
-  strokeDashoffset: 0,
-  duration: 2,
-  scrollTrigger: {
-    trigger: ".espacio-linea", 
-    start: "top center",
-    end: "bottom center",
-    scrub: 1,
-    toggleActions: "play none none reverse"
-  }
-})
+const path = document.querySelector("#animatedArc");
 
-// Animación de la imagen coin-1: fade in y scale
-gsap.from(".coin-logo", {
-  opacity: 0,
-  scale: 0.8,
-  y: 50,
-  duration: 0.8,
+// 1. Calculamos la longitud real de la ruta SVG
+const pathLength = path.getTotalLength();
+
+// 2. Configuramos el estado inicial de la línea (oculta)
+gsap.set(path, {
+  strokeDasharray: pathLength,
+  strokeDashoffset: pathLength
+});
+
+// 3. Animación de la línea dibujándose al hacer scroll
+gsap.to(path, {
+  strokeDashoffset: 0,
+  ease: "none",
   scrollTrigger: {
-    trigger: ".coin-logo",
-    start: "top 75%",
-    end: "top 25%",
-    scrub: 0.5,
-    markers: false
+    trigger: "#proceso",
+    start: "top center", // Empieza cuando la sección 'proceso' llega al centro
+    end: "center center", // Termina de dibujarse justo cuando llegas al coin
+    scrub: 1 // Suaviza la animación de retroceso/avance
+  }
+});
+
+// 4. Animación del Coin y el texto
+gsap.from(".primer", {
+  opacity: 0,
+  y: 50,
+  duration: 1,
+  scrollTrigger: {
+    trigger: ".primer",
+    start: "top 80%", // Aparece cuando el row está al 80% de la ventana
+    toggleActions: "play none none reverse"
   }
 });

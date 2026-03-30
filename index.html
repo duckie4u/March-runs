@@ -4,82 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="public/css/styles.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js\"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js\"></script>    <title>Inpartners</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>    
+    <title>Inpartners</title>
 </head>
 <body>
     <header class="video-container">
-    <!--? Video desktop -->
-    <div class="video-wrapper d-none d-md-block">
-        <video autoplay muted playsinline style="object-fit: cover; width:100%; height:100vh;">
-            <source src="public/assets/video-inicial-pc.mp4" type="video/mp4">
-        </video>
-        <div id="scrollDownPc" class="position-absolute bottom-0 start-50 translate-middle-x mb-3">
-            <img src="public/assets/scroll-down.svg" alt="Scroll Down" width="40" height="40">
+        <div class="video-wrapper d-none d-md-block">
+            <video autoplay muted playsinline style="object-fit: cover; width:100%; height:100vh;">
+                <source src="public/assets/video-inicial-pc.mp4" type="video/mp4">
+            </video>
+            <div id="scrollDownPc" class="position-absolute bottom-0 start-50 translate-middle-x mb-3">
+                <img src="public/assets/scroll-down.svg" alt="Scroll Down" width="40" height="40">
+            </div>
         </div>
-    </div>
 
-    <!--? Video mobile -->
-    <div class="video-wrapper d-block d-md-none">
-        <video autoplay muted playsinline style="object-fit: cover; width:100%; height:100vh;">
-            <source src="public/assets/video-inicial-mobile.mp4" type="video/mp4">
-        </video>
-
-        <div id="scrollDownMovil" class="position-absolute bottom-0 start-50 translate-middle-x mb-3">
-            <img src="public/assets/scroll-down.svg" alt="Scroll Down" width="40" height="40">
+        <div class="video-wrapper d-block d-md-none">
+            <video autoplay muted playsinline style="object-fit: cover; width:100%; height:100vh;">
+                <source src="public/assets/video-inicial-mobile.mp4" type="video/mp4">
+            </video>
+            <div id="scrollDownMovil" class="position-absolute bottom-0 start-50 translate-middle-x mb-3">
+                <img src="public/assets/scroll-down.svg" alt="Scroll Down" width="40" height="40">
+            </div>
         </div>
-    </div>
     </header>
-    <section id="proceso" class="scroll-animation-section">
-        <div class="container-fluid">
-            <!--? Espaciador superior -->
-            <div class="row espacio-superior">
-                <div class="col-12 espacio-superior-content"></div>
+
+    <section id="proceso" class="scroll-animation-section position-relative">
+        
+        <svg class="animated-line-svg position-absolute top-0 start-0 w-100 h-100" preserveAspectRatio="none" viewBox="0 0 1200 800">
+            <defs>
+                <filter id="neonGlow">
+                    <feGaussianBlur stdDeviation="5" result="coloredBlur"/>
+                    <feMerge>
+                        <feMergeNode in="coloredBlur"/>
+                        <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                </filter>
+            </defs>
+            <path id="animatedArc" d="M -50 50 Q 600 750 1050 550" fill="none" stroke="#0ff" stroke-width="5" stroke-linecap="round" filter="url(#neonGlow)"/>
+        </svg>
+
+        <div class="container-fluid position-relative" style="z-index: 2;">
+            
+            <div class="row">
+                <div class="col-12 espacio-grande"></div>
             </div>
 
-            <!--? Arco de luz animado -->
-            <div class="row espacio-linea">
-                <div class="col-12">
-                    <svg class="animated-line-svg" width="100%" height="400" viewBox="0 0 1200 400" preserveAspectRatio="none">
-                        <defs>
-                            <filter id="neonGlow">
-                                <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
-                                <feMerge>
-                                    <feMergeNode in="coloredBlur"/>
-                                    <feMergeNode in="SourceGraphic"/>
-                                </feMerge>
-                            </filter>
-                        </defs>
-                        <!-- Arco de luz: parte de izquierda, sube hacia el center-right donde va el coin -->
-                        <path id="animatedArc" d="M 0 300 Q 600 50 1200 100" fill="none" stroke="white" stroke-width="4" stroke-linecap="round" filter="url(#neonGlow)" stroke-dasharray="800" stroke-dashoffset="800"/>
-                    </svg>
-                </div>
-            </div>
-
-            <!--? Espaciador medio -->
-            <div class="row espacio-medio">
-                <div class="col-12 espacio-medio-content"></div>
-            </div>
-
-            <!--? Contenido y imagen coin-1 -->
-            <div class="row primer g-2 g-lg-4">
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <p class="text-light">Your partner in success.</p>
+            <div class="row primer g-4 align-items-center px-4 px-md-5">
+                <div class="col-12 col-md-6 col-lg-5">
+                    <h2 class="text-light display-5 fw-bold">Your partner in success.</h2>
+                    <p class="text-light fs-5">Llevamos tuxs ideas al siguiente nivel.</p>
                 </div> 
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <p class="text-light"></p>
-                </div> 
-                <div class="col-12 col-lg-5 d-flex align-items-center justify-content-center">
+                
+                <div class="d-none d-lg-block col-lg-2"></div> 
+                
+                <div class="col-12 col-md-6 col-lg-5 d-flex justify-content-center justify-content-md-end">
                     <img src="public/assets/coin-1.png" alt="Coin" class="img-fluid coin-logo">
                 </div>  
             </div>
 
-            <!--? Espaciador inferior -->
-            <div class="row espacio-inferior">
-                <div class="col-12 espacio-inferior-content"></div>
+            <div class="row">
+                <div class="col-12 espacio-inferior"></div>
             </div>
         </div>
     </section>
+
     <script src="public/js/script.js"></script>
 </body>
 </html>

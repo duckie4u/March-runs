@@ -7,26 +7,13 @@ header {
 
 #proceso {
   background-color: #050505;
-  position: relative;
-  padding: 0;
+  /* Asegura que no haya desbordamiento horizontal si el SVG se estira */
+  overflow-x: hidden; 
 }
 
-#proceso .container-fluid {
-  padding: 0;
-}
-
-.espacio-superior,
-.espacio-linea,
-.espacio-medio,
-.espacio-inferior {
-  margin: 0;
-  padding: 0;
-}
-
+/* Evita que el SVG bloquee los clicks en el texto o la moneda */
 .animated-line-svg {
-  display: block;
-  width: 100%;
-  height: auto;
+  pointer-events: none;
 }
 
 #scrollDownPc img, #scrollDownMovil img {
@@ -49,11 +36,10 @@ header {
   50% { transform: translateY(10px); }
 }
 
+/* Modificado para controlar el color desde el HTML (neón cyan por defecto) */
 #animatedArc {
-  stroke: white;
-  stroke-width: 4;
   stroke-linecap: round;
-  filter: url(#neonGlow);
+  stroke: whitesmoke
 }
 
 .coin-logo {
@@ -62,61 +48,29 @@ header {
 }
 
 @keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
 }
 
 .text-light {
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.9);
 }
 
-.espacio-superior-content,
-.espacio-medio-content,
-.espacio-inferior-content {
-  display: block;
+/* Control de los espacios requeridos */
+.espacio-grande {
+  height: 40vh; /* Ajusta este valor para dar más o menos espacio entre el header y el row */
 }
 
-.espacio-superior-content,
-.espacio-inferior-content {
-  height: 200px;
+.espacio-inferior {
+  height: 20vh;
 }
 
-.espacio-medio-content {
-  height: 300px;
-}
-
-/* Espacios responsive - reducir en móvil */
 @media (max-width: 768px) {
-  .espacio-superior-content,
-  .espacio-inferior-content {
-    height: 100px;
+  .espacio-grande {
+    height: 20vh;
   }
-
-  .espacio-medio-content {
-    height: 150px;
-  }
-
   .coin-logo {
-    max-width: 150px;
-  }
-}
-
-@media (min-width: 769px) and (max-width: 1024px) {
-  .espacio-superior-content,
-  .espacio-inferior-content {
-    height: 150px;
-  }
-
-  .espacio-medio-content {
-    height: 200px;
-  }
-
-  .coin-logo {
-    max-width: 250px;
+    max-width: 180px;
+    margin-top: 2rem;
   }
 }
