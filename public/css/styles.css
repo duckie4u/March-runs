@@ -1,0 +1,122 @@
+header {
+  background-color: #050505;
+  position: relative;
+  overflow: hidden;
+  height: 100vh;  
+}
+
+#proceso {
+  background-color: #050505;
+  position: relative;
+  padding: 0;
+}
+
+#proceso .container-fluid {
+  padding: 0;
+}
+
+.espacio-superior,
+.espacio-linea,
+.espacio-medio,
+.espacio-inferior {
+  margin: 0;
+  padding: 0;
+}
+
+.animated-line-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+#scrollDownPc img, #scrollDownMovil img {
+  animation: bounce 2s infinite;
+  z-index: 10;
+  position: relative;
+}
+
+#scrollDownPc, #scrollDownMovil {
+  opacity: 0;
+  transition: opacity 0.5s ease-in;
+}
+
+#scrollDownPc.show, #scrollDownMovil.show {
+  opacity: 1;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+}
+
+#animatedArc {
+  stroke: white;
+  stroke-width: 4;
+  stroke-linecap: round;
+  filter: url(#neonGlow);
+}
+
+.coin-logo {
+  max-width: 300px;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.text-light {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.1rem;
+}
+
+.espacio-superior-content,
+.espacio-medio-content,
+.espacio-inferior-content {
+  display: block;
+}
+
+.espacio-superior-content,
+.espacio-inferior-content {
+  height: 200px;
+}
+
+.espacio-medio-content {
+  height: 300px;
+}
+
+/* Espacios responsive - reducir en móvil */
+@media (max-width: 768px) {
+  .espacio-superior-content,
+  .espacio-inferior-content {
+    height: 100px;
+  }
+
+  .espacio-medio-content {
+    height: 150px;
+  }
+
+  .coin-logo {
+    max-width: 150px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .espacio-superior-content,
+  .espacio-inferior-content {
+    height: 150px;
+  }
+
+  .espacio-medio-content {
+    height: 200px;
+  }
+
+  .coin-logo {
+    max-width: 250px;
+  }
+}
