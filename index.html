@@ -1,18 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- // * ESTILOS Y LIBRERÍAS EXTERNAS -->
     <link rel="stylesheet" href="public/css/styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">    
+    
+    <!-- // * LIBRERÍAS DE ANIMACIÓN (GSAP + ScrollTrigger) -->
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/ScrollTrigger.min.js"></script>
+    
     <title>Inpartners</title>
 </head>
 <body>
     <header class="video-container">
         <div class="video-wrapper d-none d-md-block">
-            <video autoplay muted playsinline style="object-fit: cover; width:100%; height:100vh;">
+            <video autoplay muted playsinline style="object-fit: cover; width:100%; height:100vh;" poster="public/assets/poster.png">
                 <source src="public/assets/video-inicial-pc.mp4" type="video/mp4">
             </video>
             <div id="scrollDownPc" class="position-absolute bottom-0 start-50 translate-middle-x mb-3">
@@ -21,7 +26,7 @@
         </div>
 
         <div class="video-wrapper d-block d-md-none">
-            <video autoplay muted playsinline style="object-fit: cover; width:100%; height:100vh;">
+            <video autoplay muted playsinline style="object-fit: cover; width:100%; height:100vh;" poster="public/assets/poster.png">
                 <source src="public/assets/video-inicial-mobile.mp4" type="video/mp4">
             </video>
             <div id="scrollDownMovil" class="position-absolute bottom-0 start-50 translate-middle-x mb-3">
@@ -31,8 +36,7 @@
     </header>
 
     <section id="proceso" class="scroll-animation-section position-relative">
-        
-        <svg class="animated-line-svg" viewBox="0 0 1200 2400" preserveAspectRatio="xMidYMid meet">
+        <svg class="animated-line-svg" viewBox="0 0 1200 3000" preserveAspectRatio="xMidYMid meet">
             <defs>
                 <filter id="neonGlow">
                     <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
@@ -42,10 +46,25 @@
                     </feMerge>
                 </filter>
             </defs>
-            <!-- Arco suave y consistente: curva única y predecible -->
-            <path id="animatedArc" 
-                d="M 100 200 C 200 300, 400 400, 600 500 C 800 600, 900 700, 1000 900 C 1050 1000, 1100 1200, 1050 1400 C 1000 1600, 800 1800, 600 1900 C 400 2000, 200 2100, 100 2200" 
-                fill="none" stroke="#0ff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" filter="url(#neonGlow)"/>
+            
+            <!-- Línea principal: pasa por coin 1, coin 2, coin 3 y termina en el logo -->
+            <path id="animatedArc"
+                d="M -200 0 C 300 300, 950 600, 950 600 C 950 900, 250 1200, 250 1200 C 250 1450, 600 1700, 600 1700 C 600 2200, 600 3000, 600 3000"
+                fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" filter="url(#neonGlow)" stroke-dasharray="2700" stroke-dashoffset="2700"/>
+
+            <!-- Colas: más curvas, mismo color y suavidad que la principal -->
+            <path id="cometTail-1"
+                d="M 540 1680 C 300 2100, 400 2600, 600 3000"
+                fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" filter="url(#neonGlow)" opacity="0.9" stroke-dasharray="1400" stroke-dashoffset="1400"/>
+            <path id="cometTail-2"
+                d="M 660 1680 C 900 2100, 800 2600, 600 3000"
+                fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" filter="url(#neonGlow)" opacity="0.9" stroke-dasharray="1400" stroke-dashoffset="1400"/>
+            <path id="cometTail-3"
+                d="M 600 1740 C 400 2300, 500 2700, 600 3000"
+                fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" filter="url(#neonGlow)" opacity="0.9" stroke-dasharray="1400" stroke-dashoffset="1400"/>
+            <path id="cometTail-4"
+                d="M 600 1660 C 800 2300, 700 2700, 600 3000"
+                fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" filter="url(#neonGlow)" opacity="0.9" stroke-dasharray="1400" stroke-dashoffset="1400"/>
         </svg>
 
         <div class="container-fluid position-relative" style="z-index: 2;">
@@ -83,27 +102,204 @@
                     <h2 class="text-light display-5 fw-bold">Resultados únicos.</h2>
                     <p class="text-light fs-5">Destaca con experiencias memorables.</p>
                 </div> 
-                <div class="d-none d-lg-block col-lg-2"></div> 
+                <div class="d-none d-lg-block col-lg-2"></div>
                 <div class="col-12 col-md-6 col-lg-5 d-flex justify-content-center justify-content-md-end">
                     <img src="public/assets/coin-3.png" alt="Coin 3" class="img-fluid coin-logo coin-3">
                 </div>  
             </div>
-
-            <div class="row"><div class="col-12 espacio-inferior"></div></div>
+        <div class="row"><div class="col-12 espacio-inferior"></div></div>
         
             <div class="row"><div class="col-12 espacio-grande"></div></div>
 
-            <div class="row tercer g-4 align-items-center px-4 px-md-5">
-                <div class="d-none d-lg-block col-lg-2"></div>  
-                <div class="d-lg-block col-lg-12">
-                    <img src="public/assets/coin-logo.png" alt="Coin Logo" class="img-fluid coin-logo coin-3">
+            <div class="row logo-section g-4 align-items-center px-4 px-md-5 text-center">
+                <div class="col-12 d-flex justify-content-center">
+                    <img src="public/assets/coin-logo.png" alt="Coin Logo" class="img-fluid coin-logo logo-final">
                 </div> 
-                <div class="d-none d-lg-block col-lg-2"></div> 
             </div>
+            
+            <div class="row"><div class="col-12 espacio-inferior"></div></div>
         </div>
         
     </section>
+</section>
+
+    <div class="w-100" style="background-color: #050505;">
+        <div class="espacio-inferior"></div> 
+    </div>
+
+<section id="referidos2" class="referidos-section py-5 py-md-6">
+    <div class="container-fluid px-3 px-md-4 px-lg-5">
+        <div class="row g-2 g-sm-3 g-md-4 align-items-stretch">
+            
+            <div class="col-6 col-md-6 order-1">
+                <div class="card h-100 border-0 bg-dark rounded-2 rounded-md-3 p-3 p-md-4 p-lg-5 d-flex flex-column justify-content-center shadow-lg">
+                    <div class="card-body p-0">
+                        <h2 class="text-light display-6 fw-bold mb-2 mb-md-3">Título Diferente.</h2>
+                        <p class="text-light-50 fs-6 fs-md-5 mb-3 mb-md-4 lh-lg">
+                            Aquí pones el otro texto que necesites. Se mantiene la estructura exacta pero al otro lado.
+                        </p>
+                        <button class="btn btn-metallic fw-bold px-3 px-md-4 py-1 py-md-2 fs-6 fs-md-5 mt-2 mt-md-3">Acción 2</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-6 order-2">
+                <div class="card h-100 border-0 bg-dark rounded-2 rounded-md-3 overflow-hidden shadow-lg">
+                    <div class="referidos-card-image">
+                        <picture>
+                            <source media="(min-width: 768px)" srcset="public/assets/salesPc.png">
+                            <img src="public/assets/salesMov.png" alt="Descripción">
+                        </picture>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+    <section id="contacto" class="py-5 py-md-6 position-relative">
+        <div class="container-fluid px-4 px-md-5">
+            <!-- Encabezado -->
+            <div class="row mb-5 mb-md-6">
+                <div class="col-12 col-md-10 col-lg-8 mx-auto text-center">
+                    <h2 class="text-light display-5 fw-bold mb-3">Hagamos equipo.</h2>
+                    <p class="text-light-50 fs-5">Déjanos tus datos y comencemos a construir algo increíble.</p>
+                </div>
+            </div>
+
+            <!-- Formulario -->
+            <div class="row">
+                <div class="col-12 col-md-10 col-lg-7 mx-auto">
+                    <div class="card border-0 bg-dark rounded-3 p-5 shadow-lg position-relative">
+                        <div class="position-absolute top-0 start-50 translate-middle">
+                            <div class="bg-dark rounded-circle p-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#e0e0e0" viewBox="0 0 16 16">
+                                    <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
+                                </svg>
+                            </div>
+                        </div>
+
+                            <form id="miFormulario" class="mt-4 pt-3" action="https://formspree.io/f/xvzvrneb" method="POST">
+                                <div class="row g-3 g-md-4">
+                                    
+                                    <div class="col-12 col-md-6">
+                                        <label for="nombre" class="form-label text-light fw-semibold mb-2">Nombre</label>
+                                        <input type="text" name="nombre" class="form-control custom-input" id="nombre" placeholder="Tu nombre" required>
+                                    </div>
+
+                                    <div class="col-12 col-md-6">
+                                        <label for="apellido" class="form-label text-light fw-semibold mb-2">Apellido</label>
+                                        <input type="text" name="apellido" class="form-control custom-input" id="apellido" placeholder="Tu apellido" required>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label for="telefono" class="form-label text-light fw-semibold mb-2">Teléfono</label>
+                                        <input type="tel" name="telefono" class="form-control custom-input" id="telefono" placeholder="+57 300 000 0000" required>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label for="correo" class="form-label text-light fw-semibold mb-2">Correo Electrónico</label>
+                                        <input type="email" name="email" class="form-control custom-input" id="correo" placeholder="correo@ejemplo.com" required>
+                                    </div>
+
+                                    <div class="col-12 mt-4">
+                                        <button type="submit" id="btnEnviar" class="btn btn-metallic w-100 fw-bold fs-5 py-2">
+                                            Enviar
+                                        </button>
+                                    </div>
+
+                                </div>
+                            </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section id="referidos1" class="referidos-section py-5 py-md-6">
+    <div class="container-fluid px-3 px-md-4 px-lg-5">
+        <div class="row g-2 g-sm-3 g-md-4 align-items-stretch">
+            
+            <div class="col-6 col-md-6">
+                <div class="card h-100 border-0 bg-dark rounded-2 rounded-md-3 overflow-hidden shadow-lg">
+                    <div class="referidos-card-image">
+                        <picture>
+                            <source media="(min-width: 768px)" srcset="public/assets/try-horizontal.png">
+                            <img src="public/assets/try.png" alt="Descripción">
+                        </picture>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-6 col-md-6">
+                <div class="card h-100 border-0 bg-dark rounded-2 rounded-md-3 p-3 p-md-4 p-lg-5 d-flex flex-column justify-content-center shadow-lg">
+                    <div class="card-body p-0">
+                        <h2 class="text-light display-6 fw-bold mb-2 mb-md-3">Crezcamos juntos.</h2>
+                        <p class="text-light-50 fs-6 fs-md-5 mb-3 mb-md-4 lh-lg">
+                            Trae tus referidos. Ellos obtienen resultados excepcionales y tú recibes grandes beneficios. Una alianza donde todos ganamos.
+                        </p>
+                        <button class="btn btn-metallic fw-bold px-3 px-md-4 py-1 py-md-2 fs-6 fs-md-5 mt-2 mt-md-3">Únete al programa</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+    <!-- Footer -->
+    <footer id="footer" class="py-4 py-md-5 border-top border-secondary">
+        <div class="container-fluid px-4 px-md-5">
+            <div class="row align-items-center">
+                <!-- Marca / Copyright -->
+                <div class="col-12 col-md-4 text-center text-md-start mb-3 mb-md-0">
+                    <p class="text-light-50 mb-0">© 2026 Inpartners. Todos los derechos reservados.</p>
+                </div>
+
+                <!-- Redes Sociales -->
+                <div class="col-12 col-md-4 text-center mb-3 mb-md-0">
+                    <div class="d-flex justify-content-center gap-3">
+                        <a href="https://instagram.com/inpartners" target="_blank" class="social-link" title="Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.271.373.145.64.319.92.599.28.28.453.546.598.92.105.282.236.707.27 1.486.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.271 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.105-.707.236-1.486.27-.843.04-1.096.048-3.232.048s-2.39-.008-3.233-.048c-.78-.034-1.204-.166-1.486-.27a2.478 2.478 0 0 1-.92-.599 2.48 2.48 0 0 1-.6-.92c-.105-.282-.236-.705-.27-1.485-.039-.843-.047-1.096-.047-3.232 0-2.136.008-2.388.047-3.232.034-.78.166-1.204.27-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.105.705-.236 1.486-.271.843-.039 1.096-.047 3.232-.047zm0 1.442a4.3 4.3 0 1 0 0 8.6 4.3 4.3 0 0 0 0-8.6zm0 1.442a2.858 2.858 0 1 1 0 5.716 2.858 2.858 0 0 1 0-5.716zm3.686-6.313a.503.503 0 1 1 0-1.006.503.503 0 0 1 0 1.006z"/>
+                            </svg>
+                        </a>
+                        <a href="https://facebook.com/inpartners" target="_blank" class="social-link" title="Facebook">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.166 1.791.166v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+                            </svg>
+                        </a>
+                        <a href="https://tiktok.com/@inpartners" target="_blank" class="social-link" title="TikTok">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.666-4-1.581-.946.516-2.023.999-3 .999V8a5 5 0 0 0 5-5V0z"/><path d="M3 16V4a4 4 0 0 1 4-4c.547 0 1.075.072 1.576.208a4 4 0 0 1 3.997 3.778L15.3 9.5s.359-1.938-1.5-2.5c0 1.86-.583 4.734-3.3 5.5"/>
+                            </svg>
+                        </a>
+                        <a href="mailto:info@inpartners.com" class="social-link" title="Email">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Links rápidos -->
+                <div class="col-12 col-md-4 text-center text-md-end">
+                    <div class="d-flex justify-content-center justify-content-md-end gap-3">
+                        <a href="#proceso" class="footer-link small">Servicios</a>
+                        <a href="#contacto" class="footer-link small">Contacto</a>
+                        <a href="#referidos" class="footer-link small">Referidos</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <script src="public/js/script.js"></script>
+    
+<a href="#contacto" class="btn-flotante-directo shadow-lg" title="Escríbenos">
+    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576zm6.787-8.201L1.591 6.602l4.339 2.76z"/>
+    </svg>
+</a>
 </body>
 </html>
