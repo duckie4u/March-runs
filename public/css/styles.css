@@ -130,21 +130,30 @@ section {
 
 /* Botón estilo Plateado Metálico */
 .btn-metallic {
-  background-color: transparent;
-  color: #e0e0e0;
-  border: 2px solid #c0c0c0; /* Gris plata */
+  background-color: transparent !important;
+  color: #ffffff !important;
+  border: 2px solid #c0c0c0 !important;
   padding: 12px;
   border-radius: 8px;
   transition: all 0.3s ease;
   letter-spacing: 1px;
+  font-weight: 700 !important;
+}
+
+.btn-metallic:focus {
+  background-color: transparent !important;
+  color: #ffffff !important;
+  border-color: #ffffff !important;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3) !important;
+  outline: none !important;
 }
 
 /* Hover: Se llena de plateado brillante y el texto pasa a negro para máximo contraste */
 .btn-metallic:hover {
-  background-color: #e0e0e0;
-  color: #050505;
-  border-color: #e0e0e0;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  background-color: #e0e0e0 !important;
+  color: #050505 !important;
+  border-color: #e0e0e0 !important;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3) !important;
 }
 
 /* ===== SECCIÓN REFERIDOS ===== */
@@ -238,8 +247,6 @@ section {
 #footer {
   background-color: #050505;
   border-top: 1px solid rgba(255, 255, 255, 0.15);
-  margin-top: 2rem;
-  padding-top: 2rem;
   padding-bottom: 2rem;
 }
 
