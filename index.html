@@ -36,37 +36,6 @@
     </header>
 
     <section id="proceso" class="scroll-animation-section position-relative">
-        <svg class="animated-line-svg" viewBox="0 0 1200 3000" preserveAspectRatio="xMidYMid meet">
-            <defs>
-                <filter id="neonGlow">
-                    <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-                    <feMerge>
-                        <feMergeNode in="coloredBlur"/>
-                        <feMergeNode in="SourceGraphic"/>
-                    </feMerge>
-                </filter>
-            </defs>
-            
-            <!-- Línea principal: pasa por coin 1, coin 2, coin 3 y termina en el logo -->
-            <path id="animatedArc"
-                d="M -200 0 C 300 300, 950 600, 950 600 C 950 900, 250 1200, 250 1200 C 250 1450, 600 1700, 600 1700 C 600 2200, 600 3000, 600 3000"
-                fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" filter="url(#neonGlow)" stroke-dasharray="2700" stroke-dashoffset="2700"/>
-
-            <!-- Colas: más curvas, mismo color y suavidad que la principal -->
-            <path id="cometTail-1"
-                d="M 540 1680 C 300 2100, 400 2600, 600 3000"
-                fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" filter="url(#neonGlow)" opacity="0.9" stroke-dasharray="1400" stroke-dashoffset="1400"/>
-            <path id="cometTail-2"
-                d="M 660 1680 C 900 2100, 800 2600, 600 3000"
-                fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" filter="url(#neonGlow)" opacity="0.9" stroke-dasharray="1400" stroke-dashoffset="1400"/>
-            <path id="cometTail-3"
-                d="M 600 1740 C 400 2300, 500 2700, 600 3000"
-                fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" filter="url(#neonGlow)" opacity="0.9" stroke-dasharray="1400" stroke-dashoffset="1400"/>
-            <path id="cometTail-4"
-                d="M 600 1660 C 800 2300, 700 2700, 600 3000"
-                fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" filter="url(#neonGlow)" opacity="0.9" stroke-dasharray="1400" stroke-dashoffset="1400"/>
-        </svg>
-
         <div class="container-fluid position-relative" style="z-index: 2;">
             
             <div class="row"><div class="col-12 espacio-grande"></div></div>
@@ -132,10 +101,10 @@
         <div class="row g-2 g-sm-3 g-md-4 align-items-stretch">
             
             <div class="col-6 col-md-6 order-1">
-                <div class="card h-100 border-0 bg-dark rounded-2 rounded-md-3 p-3 p-md-4 p-lg-5 d-flex flex-column justify-content-center shadow-lg">
+                <div class="card border-0 bg-dark rounded-2 p-3 p-md-4 p-lg-5 d-flex flex-column justify-content-center shadow-lg" style="height: 50vh;">
                     <div class="card-body p-0">
-                        <h2 class="text-light display-6 fw-bold mb-2 mb-md-3">Título Diferente.</h2>
-                        <p class="text-light-50 fs-6 fs-md-5 mb-3 mb-md-4 lh-lg">
+                        <h2 class="text-light fw-bold mb-2 mb-md-3">Título Diferente.</h2>
+                        <p class="text-light fs-6 fs-md-5 mb-3 mb-md-4 lh-lg">
                             Aquí pones el otro texto que necesites. Se mantiene la estructura exacta pero al otro lado.
                         </p>
                         <button class="btn btn-metallic fw-bold px-3 px-md-4 py-1 py-md-2 fs-6 fs-md-5 mt-2 mt-md-3">Acción 2</button>
@@ -144,7 +113,7 @@
             </div>
 
             <div class="col-6 col-md-6 order-2">
-                <div class="card h-100 border-0 bg-dark rounded-2 rounded-md-3 overflow-hidden shadow-lg">
+                <div class="card border-0 bg-dark rounded-2 overflow-hidden shadow-lg">
                     <div class="referidos-card-image">
                         <picture>
                             <source media="(min-width: 768px)" srcset="public/assets/salesPc.png">
@@ -163,7 +132,7 @@
             <div class="row mb-5 mb-md-6">
                 <div class="col-12 col-md-10 col-lg-8 mx-auto text-center">
                     <h2 class="text-light display-5 fw-bold mb-3">Hagamos equipo.</h2>
-                    <p class="text-light-50 fs-5">Déjanos tus datos y comencemos a construir algo increíble.</p>
+                    <p class="text-light fs-5">Déjanos tus datos y comencemos a construir algo increíble.</p>
                 </div>
             </div>
 
@@ -221,7 +190,7 @@
         <div class="row g-2 g-sm-3 g-md-4 align-items-stretch">
             
             <div class="col-6 col-md-6">
-                <div class="card h-100 border-0 bg-dark rounded-2 rounded-md-3 overflow-hidden shadow-lg">
+                <div class="card border-0 bg-dark rounded-2 overflow-hidden shadow-lg">
                     <div class="referidos-card-image">
                         <picture>
                             <source media="(min-width: 768px)" srcset="public/assets/try-horizontal.png">
@@ -232,13 +201,13 @@
             </div>
             
             <div class="col-6 col-md-6">
-                <div class="card h-100 border-0 bg-dark rounded-2 rounded-md-3 p-3 p-md-4 p-lg-5 d-flex flex-column justify-content-center shadow-lg">
+                <div class="card border-0 bg-dark rounded-2 p-3 p-md-4 p-lg-5 d-flex flex-column justify-content-center shadow-lg" style="height: 50vh;">
                     <div class="card-body p-0">
                         <h2 class="text-light display-6 fw-bold mb-2 mb-md-3">Crezcamos juntos.</h2>
-                        <p class="text-light-50 fs-6 fs-md-5 mb-3 mb-md-4 lh-lg">
+                        <p class="text-light fs-6 fs-md-5 mb-3 mb-md-4 lh-lg">
                             Trae tus referidos. Ellos obtienen resultados excepcionales y tú recibes grandes beneficios. Una alianza donde todos ganamos.
                         </p>
-                        <button class="btn btn-metallic fw-bold px-3 px-md-4 py-1 py-md-2 fs-6 fs-md-5 mt-2 mt-md-3"sx>Únete al programa</button>
+                        <button class="btn btn-metallic fw-bold px-3 px-md-4 py-1 py-md-2 fs-6 fs-md-5 mt-2 mt-md-3">Únete al programa</button>
                     </div>
                 </div>
             </div>

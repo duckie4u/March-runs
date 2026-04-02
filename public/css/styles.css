@@ -12,10 +12,9 @@ section {
 #proceso {
   background-color: #050505;
   position: relative;
-  overflow: hidden;
 }
 
-/* Optimizar SVG para mejor renderizado */
+/* SVG */
 .animated-line-svg {
   pointer-events: none;
   position: absolute;
@@ -26,6 +25,7 @@ section {
   z-index: 1;
 }
 
+/* Scroll icon */
 #scrollDownPc img, #scrollDownMovil img {
   animation: bounce 2s infinite;
   z-index: 10;
@@ -34,7 +34,6 @@ section {
 
 #scrollDownPc, #scrollDownMovil {
   opacity: 0;
-  transition: opacity 0.5s ease-in;
 }
 
 #scrollDownPc.show, #scrollDownMovil.show {
@@ -46,36 +45,22 @@ section {
   50% { transform: translateY(10px); }
 }
 
-/* Modificado para controlar el color desde el HTML (neón cyan por defecto) */
-#animatedArc {
-  stroke-linecap: round;
-  stroke: whitesmoke
-}
-
+/* 🔥 IMPORTANTE: quitamos animación */
 .coin-logo, .coin-1, .coin-2, .coin-3 {
-  width: 180px;
-  height: 180px;
+  width: 90%;
+  height: 60%;
   max-width: 100%;
-  animation: float 3s ease-in-out infinite;
+  will-change: transform, opacity;
 }
 
-.logo-final {
-  width: 220px !important;
-  height: 220px !important;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
-}
-
+/* textos */
 .text-light {
   color: rgba(255, 255, 255, 0.9);
 }
 
-/* Control de los espacios requeridos */
+/* espacios */
 .espacio-grande {
-  height: 40vh; /* Ajusta este valor para dar más o menos espacio entre el header y el row */
+  height: 40vh;
 }
 
 .espacio-inferior {
@@ -86,168 +71,126 @@ section {
   .espacio-grande {
     height: 20vh;
   }
-  .coin-logo {
-    max-width: 180px;
-    margin-top: 2rem;
-  }
 }
 
-/* El ícono que rompe el borde */
-.floating-icon {
-  position: absolute;
-  top: -35px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 70px;
-  height: 70px;
-  background-color: #050505; /* Se funde con el fondo negro de la página */
-  border-radius: 50%;
-  border: 2px solid rgba(192, 192, 192, 0.7); /* Borde plateado */
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.15); /* Resplandor blanco sutil */
-}
-
-/* Estilización de los inputs (cajas de texto) */
+/* inputs */
 .custom-input {
   background-color: rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.15); /* Borde gris muy oscuro/translúcido */
+  border: 1px solid rgba(255, 255, 255, 0.15);
   color: white;
   padding: 0.8rem 1rem;
-  transition: all 0.3s ease;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Efecto cuando el usuario está escribiendo */
 .custom-input:focus {
   background-color: rgba(0, 0, 0, 0.8);
-  border-color: #e0e0e0; /* Borde se vuelve plateado claro */
-  box-shadow: 0 0 12px rgba(255, 255, 255, 0.2); /* Resplandor blanco */
+  border-color: #e0e0e0;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.2);
   color: white;
   outline: none;
 }
 
-.custom-input::placeholder {
-  color: rgba(255, 255, 255, 0.3);
-}
-
-/* Botón estilo Plateado Metálico */
+/* ===== BOTONES ===== */
 .btn-metallic {
-  background-color: transparent !important;
-  color: #ffffff !important;
-  border: 2px solid #c0c0c0 !important;
+  background-color: transparent;
+  color: #ffffff;
+  border: 2px solid #c0c0c0;
   padding: 12px;
   border-radius: 8px;
-  transition: all 0.3s ease;
   letter-spacing: 1px;
-  font-weight: 700 !important;
+  font-weight: 700;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
 }
 
 .btn-metallic:focus {
-  background-color: transparent !important;
-  color: #ffffff !important;
-  border-color: #ffffff !important;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3) !important;
-  outline: none !important;
+  background-color: transparent;
+  color: #ffffff;
+  border-color: #ffffff;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+  outline: none;
 }
 
-/* Hover: Se llena de plateado brillante y el texto pasa a negro para máximo contraste */
 .btn-metallic:hover {
-  background-color: #e0e0e0 !important;
-  color: #050505 !important;
-  border-color: #e0e0e0 !important;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3) !important;
+  background-color: #e0e0e0;
+  color: #050505;
+  border-color: #e0e0e0;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
 }
 
-/* ===== SECCIÓN REFERIDOS ===== */
-#referidos {
+/* ===== REFERIDOS - TARJETAS ===== */
+.referidos-section {
   background-color: #050505;
 }
 
-#referidos .card {
-  transition: all 0.3s ease;
+.referidos-section .card {
+  height: auto;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.referidos-section .card:hover {
+  box-shadow: 0 10px 40px rgba(255, 255, 255, 0.1);
+  transform: translateY(-5px);
+}
+
+.referidos-card-image {
+  position: relative;
+  width: 100%;
+  height: 50vh;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.referidos-card-image::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.4), transparent);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.referidos-card-image picture,
+.referidos-card-image img {
+  display: none;
+}
+
+#referidos1 .card,
+#referidos2 .card {
   border-radius: 1rem;
 }
 
-#referidos .card:hover {
+#referidos1 .card:hover,
+#referidos2 .card:hover {
+  box-shadow: 0 10px 40px rgba(255, 255, 255, 0.1);
   transform: translateY(-5px);
-  box-shadow: 0 10px 40px rgba(255, 255, 255, 0.1) !important;
 }
 
-.card-img-wrapper {
-  overflow: hidden;
-}
-
-.card-img-wrapper img {
-  object-fit: cover;
-  transition: transform 0.4s ease;
-}
-
-#referidos .card:hover .card-img-wrapper img {
-  transform: scale(1.05);
-}
-
-/* ===== SECCIÓN CONTACTO ===== */
+/* ===== CONTACTO ===== */
 #contacto {
   background-color: #050505;
 }
 
 #contacto .card {
-  background: linear-gradient(135deg, rgba(30, 30, 30, 0.8), rgba(20, 20, 20, 0.9)) !important;
+  background: linear-gradient(135deg, rgba(30, 30, 30, 0.8), rgba(20, 20, 20, 0.9));
   border: 1px solid rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
+  transition: box-shadow 0.3s ease;
 }
 
 #contacto .card:hover {
-  box-shadow: 0 15px 50px rgba(255, 255, 255, 0.1) !important;
-}
-
-/* Estilos de texto */
-.text-light-50 {
-  color: rgba(255, 255, 255, 0.5);
-}
-
-/* Responsive improvements */
-@media (max-width: 768px) {
-  #referidos .row {
-    flex-direction: row;
-  }
-
-  #referidos .card {
-    margin-bottom: 0;
-  }
-
-  .card-img-wrapper {
-    height: 200px !important;
-  }
-
-  h2 {
-    font-size: 1.3rem !important;
-  }
-
-  .btn-metallic {
-    padding: 8px 16px !important;
-    font-size: 0.9rem !important;
-    background-color: grey;
-  }
-
-  .text-light-50 {
-    font-size: 0.95rem !important;
-  }
-}
-
-@media (max-width: 576px) {
-  .card-img-wrapper {
-    height: 180px !important;
-  }
-
-  h2 {
-    font-size: 1.1rem !important;
-  }
+  box-shadow: 0 15px 50px rgba(255, 255, 255, 0.1);
 }
 
 /* ===== FOOTER ===== */
 #footer {
   background-color: #050505;
   border-top: 1px solid rgba(255, 255, 255, 0.15);
-  padding-bottom: 2rem;
 }
 
 #footer .social-link {
@@ -259,8 +202,8 @@ section {
   color: rgba(255, 255, 255, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 50%;
-  transition: all 0.3s ease;
   text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 #footer .social-link:hover {
@@ -268,115 +211,38 @@ section {
   border-color: #e0e0e0;
   background-color: rgba(224, 224, 224, 0.1);
   transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
-}
-
-#footer .social-link svg {
-  width: 18px;
-  height: 18px;
 }
 
 #footer .footer-link {
   color: rgba(255, 255, 255, 0.6);
   text-decoration: none;
   transition: color 0.3s ease;
-  font-size: 0.9rem;
 }
 
 #footer .footer-link:hover {
   color: #e0e0e0;
 }
 
-#footer .text-light-50 {
-  font-size: 0.9rem;
-}
-
-/* ===== REFERIDOS SECTION ===== */
-.referidos-section {
-  background-color: #050505;
-}
-
-.referidos-card-image {
-  position: relative;
-  height: 100%;
-  min-height: 400px;
-  overflow: hidden;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.referidos-card-image::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 100%;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.4), transparent);
-  pointer-events: none;
-  z-index: 1;
-}
-
-.referidos-card-image picture,
-.referidos-card-image img {
-  display: none;
-}
-
-@media (max-width: 768px) {
-  #footer .row > div {
-    margin-bottom: 1rem;
-  }
-
-  #footer .social-link {
-    width: 36px;
-    height: 36px;
-  }
-
-  #footer .social-link svg {
-    width: 16px;
-    height: 16px;
-  }
-
-  #footer .footer-link {
-    font-size: 0.85rem;
-  }
-}
-
-html {
-    scroll-behavior: smooth; /* Esto hace que el bajonazo no sea brusco, sino un deslizamiento elegante */
-}
-
+/* ===== BOTÓN FLOTANTE ===== */
 .btn-flotante-directo {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 60px;
-    height: 60px;
-    background: #fff; /* O el color de tu preferencia */
-    color: #000;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    border: 2px solid rgba(255,255,255,0.1);
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  background: #fff;
+  color: #000;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  text-decoration: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 5px 20px rgba(255, 255, 255, 0.2);
 }
 
 .btn-flotante-directo:hover {
-    transform: translateY(-5px) scale(1.1);
-    background: #e0e0e0;
-    color: #000;
-}
-
-/* Para que en móviles muy pequeños no estorbe tanto */
-@media (max-width: 576px) {
-    .btn-flotante-directo {
-        bottom: 20px;
-        right: 20px;
-        width: 50px;
-        height: 50px;
-    }
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
 }
