@@ -36,14 +36,31 @@
     </header>
 
     <section id="proceso" class="scroll-animation-section position-relative">
-        <div class="container-fluid position-relative" style="z-index: 2;">
+        <!-- Línea animada de fondo -->
+        <svg class="animated-line-vertical" viewBox="0 0 10 3000" preserveAspectRatio="none">
+            <defs>
+                <linearGradient id="gradientLineVertical" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.9" />
+                    <stop offset="50%" style="stop-color:#90EE90;stop-opacity:0.7" />
+                    <stop offset="100%" style="stop-color:#4CAF50;stop-opacity:0.5" />
+                </linearGradient>
+            </defs>
+            <line id="verticalLine" x1="5" y1="0" x2="5" y2="3000" 
+                stroke="url(#gradientLineVertical)" 
+                stroke-width="2" 
+                stroke-linecap="round" 
+                stroke-dasharray="3000" 
+                stroke-dashoffset="3000"/>       
+        </svg>
+
+        <div class="container-fluid position-relative" style="z-index: 3;">
             
             <div class="row"><div class="col-12 espacio-grande"></div></div>
 
             <div class="row primer g-4 align-items-center px-4 px-md-5">
                 <div class="col-12 col-md-6 col-lg-5">
-                    <h2 class="text-light display-5 fw-bold">Your partner in success.</h2>
-                    <p class="text-light fs-5">Llevamos tus ideas al siguiente nivel.</p>
+                    <h2 class="text-light display-5 fw-bold">Trae a tu referido</h2>
+                    <p class="text-light fs-5">Ofrécele nuestro amplio portafolio de soluciones para sus servicios hogar.</p>
                 </div> 
                 <div class="d-none d-lg-block col-lg-2"></div> 
                 <div class="col-12 col-md-6 col-lg-5 d-flex justify-content-center justify-content-md-end">
@@ -59,8 +76,8 @@
                 </div>  
                 <div class="d-none d-lg-block col-lg-2 order-md-2"></div> 
                 <div class="col-12 col-md-6 col-lg-5 order-1 order-md-3">
-                    <h2 class="text-light display-5 fw-bold">Innovación constante.</h2>
-                    <p class="text-light fs-5">Cada detalle cuenta en la creación digital.</p>
+                    <h2 class="text-light display-5 fw-bold">Validamos sus credenciales</h2>
+                    <p class="text-light fs-5">Si tu referido no tiene reportes o alguna otra condición, será aprobado.</p>
                 </div> 
             </div>
 
@@ -68,8 +85,8 @@
 
             <div class="row tercer g-4 align-items-center px-4 px-md-5">
                 <div class="col-12 col-md-6 col-lg-5">
-                    <h2 class="text-light display-5 fw-bold">Resultados únicos.</h2>
-                    <p class="text-light fs-5">Destaca con experiencias memorables.</p>
+                    <h2 class="text-light display-5 fw-bold">Agendamiento de servicios</h2>
+                    <p class="text-light fs-5">Si es aprobrado se procede al agendamiento de los servicios.</p>
                 </div> 
                 <div class="d-none d-lg-block col-lg-2"></div>
                 <div class="col-12 col-md-6 col-lg-5 d-flex justify-content-center justify-content-md-end">
@@ -82,50 +99,56 @@
 
             <div class="row logo-section g-4 align-items-center px-4 px-md-5 text-center">
                 <div class="col-12 d-flex justify-content-center">
-                    <img src="public/assets/coin-logo.png" alt="Coin Logo" class="img-fluid coin-logo logo-final">
+                    <img id="logoFinal" src="public/assets/coin-logo.png" alt="Coin Logo" class="img-fluid coin-logo logo-final">
                 </div> 
+            </div>
+
+            <div class="row align-items-center px-4 px-md-5 text-center">
+                <div class="col-12">
+                    <h2 class="text-light display-6 fw-bold">Instala con Inpartners</h2>
+                    <p class="text-light fs-5">El éxito de tu instalación es nuestro éxito. Únete a nuestra comunidad de emprendedores.</p>
+                </div>
             </div>
             
             <div class="row"><div class="col-12 espacio-inferior"></div></div>
         </div>
-        
     </section>
-</section>
 
     <div class="w-100" style="background-color: #050505;">
         <div class="espacio-inferior"></div> 
     </div>
 
-<section id="referidos2" class="referidos-section py-5 py-md-6">
-    <div class="container-fluid px-3 px-md-4 px-lg-5">
-        <div class="row g-2 g-sm-3 g-md-4 align-items-stretch">
-            
-            <div class="col-6 col-md-6 order-1">
-                <div class="card border-0 bg-dark rounded-2 p-3 p-md-4 p-lg-5 d-flex flex-column justify-content-center shadow-lg" style="height: 50vh;">
-                    <div class="card-body p-0">
-                        <h2 class="text-light fw-bold mb-2 mb-md-3">Título Diferente.</h2>
-                        <p class="text-light fs-6 fs-md-5 mb-3 mb-md-4 lh-lg">
-                            Aquí pones el otro texto que necesites. Se mantiene la estructura exacta pero al otro lado.
-                        </p>
-                        <button class="btn btn-metallic fw-bold px-3 px-md-4 py-1 py-md-2 fs-6 fs-md-5 mt-2 mt-md-3">Acción 2</button>
+    <section id="referidos1" class="referidos-section py-5 py-md-6">
+        <div class="container-fluid px-3 px-md-4 px-lg-5">
+            <div class="row g-2 g-sm-3 g-md-4 align-items-stretch">
+                
+                <div class="col-6 col-md-6 order-1">
+                    <div class="card border-0 bg-dark rounded-2 p-3 p-md-4 p-lg-5 d-flex flex-column justify-content-center shadow-lg" style="height: 50vh;">
+                        <div class="card-body p-0">
+                            <h2 class="text-light fw-bold mb-2 mb-md-3">Recibe hasta el 140% de comisión por venta</h2>
+                            <p class="text-light fs-6 fs-md-5 mb-3 mb-md-4 lh-lg">
+                                Gana con nosotros y disfruta de comisiones competitivas, pagos puntuales y un programa de referidos diseñado para tu éxito.
+                            </p>
+                            <button class="btn btn-metallic fw-bold px-3 px-md-4 py-1 py-md-2 fs-6 fs-md-5 mt-2 mt-md-3">Empecemos ahora</button>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-6 col-md-6 order-2">
-                <div class="card border-0 bg-dark rounded-2 overflow-hidden shadow-lg">
-                    <div class="referidos-card-image">
-                        <picture>
-                            <source media="(min-width: 768px)" srcset="public/assets/salesPc.png">
-                            <img src="public/assets/salesMov.png" alt="Descripción">
-                        </picture>
+                <div class="col-6 col-md-6 order-2">
+                    <div class="card border-0 bg-dark rounded-2 overflow-hidden shadow-lg">
+                        <div class="referidos-card-image">
+                            <picture>
+                                <source media="(min-width: 768px)" srcset="public/assets/salesPc.png">
+                                <img src="public/assets/salesMov.png" alt="Descripción">
+                            </picture>
+                        </div>
                     </div>
                 </div>
-            </div>
 
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+
     <section id="contacto" class="py-5 py-md-6 position-relative">
         <div class="container-fluid px-4 px-md-5">
             <!-- Encabezado -->
@@ -185,38 +208,37 @@
         </div>
     </section>
 
-<section id="referidos1" class="referidos-section py-5 py-md-6">
-    <div class="container-fluid px-3 px-md-4 px-lg-5">
-        <div class="row g-2 g-sm-3 g-md-4 align-items-stretch">
-            
-            <div class="col-6 col-md-6">
-                <div class="card border-0 bg-dark rounded-2 overflow-hidden shadow-lg">
-                    <div class="referidos-card-image">
-                        <picture>
-                            <source media="(min-width: 768px)" srcset="public/assets/try-horizontal.png">
-                            <img src="public/assets/try.png" alt="Descripción">
-                        </picture>
+    <section id="referidos2" class="referidos-section py-5 py-md-6">
+        <div class="container-fluid px-3 px-md-4 px-lg-5">
+            <div class="row g-2 g-sm-3 g-md-4 align-items-stretch">
+                
+                <div class="col-6 col-md-6">
+                    <div class="card border-0 bg-dark rounded-2 overflow-hidden shadow-lg">
+                        <div class="referidos-card-image">
+                            <picture>
+                                <source media="(min-width: 768px)" srcset="public/assets/try-horizontal.png">
+                                <img src="public/assets/try.png" alt="Descripción">
+                            </picture>
+                        </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="col-6 col-md-6">
-                <div class="card border-0 bg-dark rounded-2 p-3 p-md-4 p-lg-5 d-flex flex-column justify-content-center shadow-lg" style="height: 50vh;">
-                    <div class="card-body p-0">
-                        <h2 class="text-light display-6 fw-bold mb-2 mb-md-3">Crezcamos juntos.</h2>
-                        <p class="text-light fs-6 fs-md-5 mb-3 mb-md-4 lh-lg">
-                            Trae tus referidos. Ellos obtienen resultados excepcionales y tú recibes grandes beneficios. Una alianza donde todos ganamos.
-                        </p>
-                        <button class="btn btn-metallic fw-bold px-3 px-md-4 py-1 py-md-2 fs-6 fs-md-5 mt-2 mt-md-3">Únete al programa</button>
+                
+                <div class="col-6 col-md-6">
+                    <div class="card border-0 bg-dark rounded-2 p-3 p-md-4 p-lg-5 d-flex flex-column justify-content-center shadow-lg" style="height: 50vh;">
+                        <div class="card-body p-0">
+                            <h2 class="text-light display-6 fw-bold mb-2 mb-md-3">Crezcamos juntos.</h2>
+                            <p class="text-light fs-6 fs-md-5 mb-3 mb-md-4 lh-lg">
+                                Trae tus referidos. Ellos obtienen resultados excepcionales y tú recibes grandes beneficios. Una alianza donde todos ganamos.
+                            </p>
+                            <button class="btn btn-metallic fw-bold px-3 px-md-4 py-1 py-md-2 fs-6 fs-md-5 mt-2 mt-md-3">Únete a nosotros</button>
+                        </div>
                     </div>
                 </div>
-            </div>
 
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-    <!-- Footer -->
     <footer id="footer" class="py-4 py-md-5 border-top border-secondary">
         <div class="container-fluid px-4 px-md-5">
             <div class="row align-items-center">
@@ -265,10 +287,13 @@
 
     <script src="public/js/script.js"></script>
     
-<a href="#contacto" class="btn-flotante-directo shadow-lg" title="Escríbenos">
-    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 16 16">
-        <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576zm6.787-8.201L1.591 6.602l4.339 2.76z"/>
-    </svg>
-</a>
+    <a href="#contacto" class="btn-flotante-directo" title="Contáctanos">
+        <div class="btn-flotante-content">
+            <span class="btn-flotante-text">Contáctanos</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576zm6.787-8.201L1.591 6.602l4.339 2.76z"/>
+            </svg>
+        </div>
+    </a>
 </body>
 </html>

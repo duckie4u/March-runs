@@ -1,5 +1,4 @@
 // ! ================ CARGAR IMÁGENES COMO BACKGROUND ================
-// // * Convierte las imágenes picture en background-image para llenar la tarjeta
 
 document.querySelectorAll('.referidos-card-image').forEach(container => {
   const picture = container.querySelector('picture');
@@ -14,7 +13,6 @@ document.querySelectorAll('.referidos-card-image').forEach(container => {
 });
 
 // ! ================ LÓGICA DE VIDEO INICIAL ================
-// // * Muestra el scroll-down indicator cuando el video termina
 
 function freezeVideo(scrollDownId) {
     const scrollElement = document.getElementById(scrollDownId);
@@ -33,132 +31,72 @@ if (desktopVideo) desktopVideo.addEventListener("ended", () => handleVideoEnd("s
 if (mobileVideo) mobileVideo.addEventListener("ended", () => handleVideoEnd("scrollDownMovil"));
 
 // ! ================ ANIMACIONES GSAP ================
-// // * Requiere: ScrollTrigger plugin para scroll-linked animations
 
+// // * Registrar ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
-// // ? Esperar a que el DOM esté completamente cargado
-// // ! getTotalLength() solo funciona cuando el SVG está renderizado
+// // * Animación de línea vertical de fondo
 window.addEventListener('load', () => {
-  const mainArc = document.querySelector("#animatedArc");
-  const tails = [
-    document.querySelector("#cometTail-1"),
-    document.querySelector("#cometTail-2"),
-    document.querySelector("#cometTail-3"),
-    document.querySelector("#cometTail-4")
-  ];
+  const verticalLine = document.querySelector("#verticalLine");
+  const logoFinal = document.querySelector("#logoFinal");
+  const procesoSection = document.querySelector("#proceso");
   
-  if (mainArc) {
-    // // * Calcular longitudes reales de los paths SVG
-    const mainArcLength = mainArc.getTotalLength();
-    const tailLengths = tails.map(tail => tail ? tail.getTotalLength() : 0);
+  if (verticalLine && procesoSection) {
+    console.log("✓ Línea vertical encontrada"); // Debug
     
-    // // * Configurar estado INICIAL: paths están ocultos
-    gsap.set(mainArc, {
-      strokeDasharray: mainArcLength,
-      strokeDashoffset: mainArcLength
-    });
-    
-    // // ? Configurar colas ocultas inicialmente
-    tails.forEach((tail, index) => {
-      if (tail) {
-        gsap.set(tail, {
-          strokeDasharray: tailLengths[index],
-          strokeDashoffset: tailLengths[index]
-        });
-      }
-    });
-    
-    // // ! LÍNEA PRINCIPAL: Se revela al scrollear de 0% a 50%
-    gsap.to(mainArc, {
+    // // * Animar la línea: se revela mientras scrolleamos
+    gsap.to(verticalLine, {
       strokeDashoffset: 0,
-      ease: "none",
+      duration: 2,
       scrollTrigger: {
         trigger: "#proceso",
-        start: "top 20%",      // // ? Empieza cuando #proceso esté al 20% del viewport
-        end: "50% 50%",        // // ? Termina a mitad de la sección
-        scrub: 0.5,            // // ? Suavidad: 0.5s delay
-        invalidateOnRefresh: true
+        start: "top 50%",
+        end: "bottom 30%",
+        scrub: 1,
+        invalidateOnRefresh: true,
+        // markers: true  // Descomenta para debug
       }
     });
+  }
+
+  // // * Cambiar imagen del logo cuando esté centrado en pantalla
+  if (logoFinal) {
+    console.log("✓ Logo encontrado"); // Debug
     
-    // // ! COLAS: Se revelan con delay después de la línea principal
-    tails.forEach((tail, index) => {
-      if (tail) {
-        gsap.to(tail, {
-          strokeDashoffset: 0,
-          ease: "none",
-          scrollTrigger: {
-            trigger: "#proceso",
-            start: "35% 50%",    // // ? Empieza más tarde (efecto de dispersión)
-            end: "100% 50%",
-            scrub: 0.5,
-            invalidateOnRefresh: true
-          }
-        });
+    let isAlternate = false;
+    const originalSrc = logoFinal.src;
+    const alternateSrc = originalSrc.replace('coin-logo.png', 'coin-logo-alt.png');
+
+    ScrollTrigger.create({
+      trigger: ".logo-section",
+      start: "center 40%",
+      end: "center 40%",
+      onEnter: () => {
+        if (!isAlternate) {
+          console.log("Logo cambiado a alternativo"); // Debug
+          logoFinal.src = alternateSrc;
+          isAlternate = true;
+        }
+      },
+      onLeave: () => {
+        if (isAlternate) {
+          console.log("Logo vuelto a original"); // Debug
+          logoFinal.src = originalSrc;
+          isAlternate = false;
+        }
       }
     });
   }
+
+  // // * Refresh ScrollTrigger después de que todo se cargue
+  ScrollTrigger.refresh();
 });
 
-// ! ================ ANIMACIONES DE CONTENIDO ================
-// // * Fade-in + movimiento vertical en cada sección
-
-gsap.registerPlugin(ScrollTrigger);
-
-const mainPath = document.querySelector("#animatedArc");
-const tails = gsap.utils.toArray([
-  "#cometTail-1",
-  "#cometTail-2",
-  "#cometTail-3",
-  "#cometTail-4"
-]);
-
-const totalLength = mainPath.getTotalLength();
-
-// inicial
-gsap.set(mainPath, {
-  strokeDasharray: totalLength,
-  strokeDashoffset: totalLength
+// // * Refresh en caso de resize
+window.addEventListener('resize', () => {
+  ScrollTrigger.getAll().forEach(trigger => trigger.refresh());
 });
 
-tails.forEach(t => {
-  const len = t.getTotalLength();
-  gsap.set(t, {
-    strokeDasharray: len,
-    strokeDashoffset: len,
-    opacity: 0
-  });
-});
-
-// timeline principal
-const tl = gsap.timeline({
-  scrollTrigger: {
-    trigger: "#proceso",
-    start: "top top",
-    end: "bottom bottom",
-    scrub: 1.5
-  }
-});
-
-// animación de la línea
-tl.to(mainPath, {
-  strokeDashoffset: 0,
-  ease: "none"
-});
-
-// aparición progresiva de coins (sincronizadas con la línea)
-tl.to(".coin-1", { opacity: 1, scale: 1 }, 0.3);
-tl.to(".coin-2", { opacity: 1, scale: 1 }, 0.55);
-tl.to(".coin-3", { opacity: 1, scale: 1 }, 0.75);
-
-// 🔥 momento CLAVE: cuando se centra
-tl.to(tails, {
-  strokeDashoffset: 0,
-  opacity: 1,
-  stagger: 0.1,
-  ease: "power2.out"
-}, 0.82);
 // ! ================ ENVÍO DE FORMULARIO ================
 // // * Conectado a Formspree: https://formspree.io/f/xvzvrneb
 
@@ -170,7 +108,7 @@ $form.addEventListener('submit', async (event) => {
     
     // // * Guardar texto original del botón
     const originalText = $btn.innerText;
-    $btn.innerText = "Enviando... 🚀";
+    $btn.innerText = "Enviando... 🔨";
     $btn.disabled = true;
 
     // // ? Recolectar datos del formulario
@@ -188,7 +126,7 @@ $form.addEventListener('submit', async (event) => {
     // // ! SI ENVÍO EXITOSO
     if (response.ok) {
         $form.reset(); // // ? Limpiar campos
-        $btn.innerText = "¡Mensaje Enviado! ✅";
+        $btn.innerText = "¡Enviado!";
         $btn.classList.replace('btn-metallic', 'btn-success'); // // ? Cambiar a verde
         
         // // ? Restaurar botón después de 4 segundos

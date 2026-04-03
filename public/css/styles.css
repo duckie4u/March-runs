@@ -25,6 +25,17 @@ section {
   z-index: 1;
 }
 
+.animated-line-vertical {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 20px;
+  height: 100%;
+  z-index: 1;
+  transform: translateX(-50%);
+}
+
 /* Scroll icon */
 #scrollDownPc img, #scrollDownMovil img {
   animation: bounce 2s infinite;
@@ -47,10 +58,26 @@ section {
 
 /* 🔥 IMPORTANTE: quitamos animación */
 .coin-logo, .coin-1, .coin-2, .coin-3 {
-  width: 90%;
-  height: 60%;
-  max-width: 100%;
+  width: 200px;
+  height: 200px;
+  max-width: 90%;
+  max-height: 90%;
   will-change: transform, opacity;
+  object-fit: contain;
+}
+
+@media (max-width: 992px) {
+  .coin-logo, .coin-1, .coin-2, .coin-3 {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media (max-width: 768px) {
+  .coin-logo, .coin-1, .coin-2, .coin-3 {
+    width: 120px;
+    height: 120px;
+  }
 }
 
 /* textos */
@@ -223,26 +250,105 @@ section {
   color: #e0e0e0;
 }
 
-/* ===== BOTÓN FLOTANTE ===== */
+/* ===== LOGO FINAL SECTION ===== */
+.logo-section {
+  margin-bottom: 2rem;
+}
+
+.logo-section + .row h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.logo-section + .row p {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+@media (max-width: 768px) {
+  .logo-section + .row h2 {
+    font-size: 1.4rem;
+  }
+
+  .logo-section + .row p {
+    font-size: 0.95rem;
+  }
+}
+
 .btn-flotante-directo {
   position: fixed;
   bottom: 30px;
   right: 30px;
-  width: 60px;
-  height: 60px;
-  background: #fff;
-  color: #000;
-  border-radius: 50%;
+  padding: 14px 28px;
+  background: linear-gradient(135deg, #e0e0e0, #ffffff);
+  color: #050505;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 9999;
   text-decoration: none;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 5px 20px rgba(255, 255, 255, 0.2);
+  box-shadow: 0 5px 25px rgba(255, 255, 255, 0.3), inset 0 2px 5px rgba(255, 255, 255, 0.5);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.btn-flotante-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.btn-flotante-text {
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  line-height: 1;
 }
 
 .btn-flotante-directo:hover {
-  transform: translateY(-5px) scale(1.1);
-  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+  transform: translateY(-6px);
+  box-shadow: 0 15px 40px rgba(224, 224, 224, 0.4), inset 0 2px 5px rgba(255, 255, 255, 0.6);
+  background: linear-gradient(135deg, #ffffff, #f0f0f0);
+}
+
+.btn-flotante-directo:hover .btn-flotante-text {
+  color: #e0e0e0;
+  text-shadow: 0 0 10px rgba(224, 224, 224, 0.5);
+}
+
+@media (max-width: 768px) {
+  .btn-flotante-directo {
+    padding: 12px 20px;
+    bottom: 20px;
+    right: 20px;
+    font-size: 0.85rem;
+  }
+
+  .btn-flotante-text {
+    font-size: 0.85rem;
+  }
+}
+
+/* Logo final section styling */
+.logo-final {
+  width: 250px;
+  height: 250px;
+  max-width: 90%;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .logo-final {
+    width: 180px;
+    height: 180px;
+  }
 }
