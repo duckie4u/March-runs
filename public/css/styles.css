@@ -14,43 +14,6 @@ section {
   position: relative;
 }
 
-/* SVG */
-.animated-line-svg {
-  pointer-events: none;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-}
-
-.animated-line-vertical {
-  pointer-events: none;
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 20px;
-  height: 100%;
-  z-index: 1;
-  transform: translateX(-50%);
-}
-
-/* Scroll icon */
-#scrollDownPc img, #scrollDownMovil img {
-  animation: bounce 2s infinite;
-  z-index: 10;
-  position: relative;
-}
-
-#scrollDownPc, #scrollDownMovil {
-  opacity: 0;
-}
-
-#scrollDownPc.show, #scrollDownMovil.show {
-  opacity: 1;
-}
-
 @keyframes bounce {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(10px); }
@@ -58,25 +21,28 @@ section {
 
 /* 🔥 IMPORTANTE: quitamos animación */
 .coin-logo, .coin-1, .coin-2, .coin-3 {
-  width: 200px;
-  height: 200px;
-  max-width: 90%;
-  max-height: 90%;
+  width: 180px;
+  height: 180px;
+  max-width: 40%;
+  max-height: 180px;
   will-change: transform, opacity;
-  object-fit: contain;
+  object-fit: cover;
+  flex-shrink: 0;
 }
 
 @media (max-width: 992px) {
   .coin-logo, .coin-1, .coin-2, .coin-3 {
-    width: 150px;
-    height: 150px;
+    width: 140px;
+    height: 140px;
+    max-width: 40%;
   }
 }
 
 @media (max-width: 768px) {
   .coin-logo, .coin-1, .coin-2, .coin-3 {
-    width: 120px;
-    height: 120px;
+    width: 110px;
+    height: 110px;
+    max-width: 45%;
   }
 }
 
@@ -152,6 +118,7 @@ section {
 
 .referidos-section .card {
   height: auto;
+  min-height: 60vh;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
@@ -163,7 +130,7 @@ section {
 .referidos-card-image {
   position: relative;
   width: 100%;
-  height: 50vh;
+  height: 60vh;
   overflow: hidden;
   background-size: cover;
   background-position: center;
