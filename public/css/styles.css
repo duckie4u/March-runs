@@ -120,8 +120,8 @@ section {
 /* ===== BOTONES ===== */
 .btn-metallic {
   background-color: transparent;
-  color: #ffffff;
-  border: 2px solid #c0c0c0;
+  color: #ffffff !important;
+  border: 2px solid #c0c0c0 !important;
   padding: 12px;
   border-radius: 8px;
   letter-spacing: 1px;
