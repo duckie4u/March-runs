@@ -20,6 +20,7 @@ window.addEventListener('load', () => {
   const animatedLine = document.querySelector('#animatedLine');
   const logoFinal = document.querySelector('#logoFinal');
   const procesoSection = document.querySelector('#proceso');
+  const floatingBtn = document.querySelector('.btn-flotante-directo');
 
   if (animatedLine && procesoSection) {
     console.log("✓ Línea animada encontrada");
@@ -79,6 +80,20 @@ window.addEventListener('load', () => {
             logoFinal.dataset.alternateActive = 'false';
           }
         }
+      }
+    });
+  }
+
+  // Floating button visibility on scroll
+  if (floatingBtn) {
+    ScrollTrigger.create({
+      trigger: '#proceso',
+      start: 'top center',
+      onEnter: () => {
+        floatingBtn.classList.add('visible');
+      },
+      onLeaveBack: () => {
+        floatingBtn.classList.remove('visible');
       }
     });
   }

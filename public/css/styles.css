@@ -276,46 +276,16 @@ section {
   font-size: 0.95rem;
   letter-spacing: 0.5px;
   white-space: nowrap;
+  opacity: 0;
+  transform: scale(0.5);
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.4s ease, box-shadow 0.3s ease;
 }
 
-.btn-flotante-content {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  width: 100%;
-}
-
-.btn-flotante-text {
-  font-size: 0.95rem;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  line-height: 1;
-}
-
-.btn-flotante-directo:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 15px 40px rgba(224, 224, 224, 0.4), inset 0 2px 5px rgba(255, 255, 255, 0.6);
-  background: linear-gradient(135deg, #ffffff, #f0f0f0);
-}
-
-.btn-flotante-directo:hover .btn-flotante-text {
-  color: #e0e0e0;
-  text-shadow: 0 0 10px rgba(224, 224, 224, 0.5);
-}
-
-@media (max-width: 768px) {
-  .btn-flotante-directo {
-    padding: 12px 20px;
-    bottom: 20px;
-    right: 20px;
-    font-size: 0.85rem;
-  }
-
-  .btn-flotante-text {
-    font-size: 0.85rem;
-  }
+.btn-flotante-directo.visible {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
 }
 
 /* Logo final section styling */
