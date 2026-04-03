@@ -14,6 +14,19 @@ section {
   position: relative;
 }
 
+/* Animated line styling */
+.animated-line-container {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 4px;
+  height: 100%;
+  z-index: 2;
+  transform: translateX(-50%);
+  filter: drop-shadow(0 0 8px rgba(121, 121, 121, 0.6)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.3));
+}
+
 @keyframes bounce {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(10px); }

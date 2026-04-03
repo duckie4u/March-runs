@@ -36,6 +36,27 @@
     </header>
 
     <section id="proceso" class="scroll-animation-section position-relative">
+        <!-- Animated vertical line -->
+        <svg class="animated-line-container" viewBox="0 0 2 3000" preserveAspectRatio="xMidYMid meet">
+            <defs>
+                <linearGradient id="lineGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style="stop-color:#0000009a;stop-opacity:1" />
+                    <stop offset="80%" style="stop-color:#5cff25;stop-opacity:0.9" />
+                    <stop offset="100%" style="stop-color:#000000dc;stop-opacity:0.6" />
+                </linearGradient>
+                <filter id="lineGlow">
+                    <feGaussianBlur stdDeviation="1" result="coloredBlur"/>
+                    <feMerge>
+                        <feMergeNode in="coloredBlur"/>
+                        <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                </filter>
+            </defs>
+            <rect id="animatedLine" x="0" y="0" width="5" height="0" 
+                fill="url(#lineGradient)"
+                filter="url(#lineGlow)"/>
+        </svg>
+
         <div class="row"><div class="col-12 espacio-inferior"></div></div>
 
         <div class="container-fluid position-relative" style="z-index: 3;">
@@ -107,10 +128,11 @@
             
             <div class="row"><div class="col-12 espacio-inferior"></div></div>
         </div>
+                
+        <div class="espacio-inferior"></div> 
     </section>
 
     <div class="w-100" style="background-color: #050505;">
-        <div class="espacio-inferior"></div> 
     </div>
 
     <section id="referidos1" class="referidos-section py-5 py-md-6">

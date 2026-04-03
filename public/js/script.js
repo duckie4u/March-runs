@@ -12,6 +12,85 @@ document.querySelectorAll('.referidos-card-image').forEach(container => {
   }
 });
 
+// ! ================ ANIMACIONES GSAP ================
+
+gsap.registerPlugin(ScrollTrigger);
+
+window.addEventListener('load', () => {
+  const animatedLine = document.querySelector('#animatedLine');
+  const logoFinal = document.querySelector('#logoFinal');
+  const procesoSection = document.querySelector('#proceso');
+
+  if (animatedLine && procesoSection) {
+    console.log("✓ Línea animada encontrada");
+
+    // Create the line animation - grows from top to bottom
+    const lineAnimation = gsap.to(animatedLine, {
+      attr: { height: 3000 },
+      scrollTrigger: {
+        trigger: '#proceso',
+        start: 'top center',
+        end: 'bottom center',
+        scrub: 1,
+        invalidateOnRefresh: true,
+        onUpdate: (self) => {
+          // Check if we're at 50% progress for logo swap
+          if (logoFinal && self.progress >= 0.5) {
+            if (!logoFinal.dataset.alternateActive) {
+              console.log("Logo swapped to alternate");
+              const originalSrc = logoFinal.src;
+              const alternateSrc = originalSrc.replace('coin-logo.png', 'coin-logo-alt.png');
+              
+              // Fade out
+              gsap.to(logoFinal, {
+                opacity: 0,
+                duration: 0.3,
+                onComplete: () => {
+                  logoFinal.src = alternateSrc;
+                  // Fade in
+                  gsap.to(logoFinal, {
+                    opacity: 1,
+                    duration: 0.3
+                  });
+                }
+              });
+              
+              logoFinal.dataset.alternateActive = 'true';
+            }
+          } else if (logoFinal && logoFinal.dataset.alternateActive === 'true') {
+            console.log("Logo swapped back to original");
+            const originalSrc = logoFinal.src;
+            const baseSrc = originalSrc.replace('coin-logo-alt.png', 'coin-logo.png');
+            
+            // Fade out
+            gsap.to(logoFinal, {
+              opacity: 0,
+              duration: 0.3,
+              onComplete: () => {
+                logoFinal.src = baseSrc;
+                // Fade in
+                gsap.to(logoFinal, {
+                  opacity: 1,
+                  duration: 0.3
+                });
+              }
+            });
+            
+            logoFinal.dataset.alternateActive = 'false';
+          }
+        }
+      }
+    });
+  }
+
+  // Refresh ScrollTrigger
+  ScrollTrigger.refresh();
+});
+
+window.addEventListener('resize', () => {
+  ScrollTrigger.getAll().forEach(trigger => trigger.refresh());
+});
+
 // ! ================ ENVÍO DE FORMULARIO ================
 // // * Conectado a Formspree: https://formspree.io/f/xvzvrneb
 
