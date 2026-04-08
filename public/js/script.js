@@ -35,6 +35,9 @@ window.addEventListener('load', () => {
   const animatedLine = document.querySelector('#animatedLine');
   const logoFinal = document.querySelector('#logoFinal');
   const procesoSection = document.querySelector('#proceso');
+  const processIntro = document.querySelector('.process-intro');
+  const processSteps = gsap.utils.toArray('.process-step');
+  const dynamicCards = gsap.utils.toArray('.dynamic-card');
   const floatingBtn = document.querySelector('.btn-flotante-directo');
   const floatingBtnContent = floatingBtn?.querySelector('.btn-flotante-content');
   const baseLogoSrc = logoFinal?.getAttribute('src') || '';
@@ -122,6 +125,96 @@ window.addEventListener('load', () => {
       }
     });
   }
+
+  if (processIntro) {
+    gsap.from(processIntro.querySelectorAll('.process-kicker, .process-heading'), {
+      opacity: 0,
+      y: 36,
+      stagger: 0.14,
+      duration: 0.9,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: processIntro,
+        start: 'top 82%'
+      }
+    });
+  }
+
+  processSteps.forEach((step, index) => {
+    const copyItems = step.querySelectorAll('.process-copy > *');
+    const coinWrap = step.querySelector('.process-coin-wrap');
+    const coin = step.querySelector('.coin-logo');
+    const direction = index % 2 === 0 ? 1 : -1;
+
+    const stepTimeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: step,
+        start: 'top 78%',
+        toggleActions: 'play none none reverse'
+      }
+    });
+
+    stepTimeline.from(copyItems, {
+      opacity: 0,
+      y: 44,
+      stagger: 0.14,
+      duration: 0.82,
+      ease: 'power3.out'
+    });
+
+    if (coinWrap && coin) {
+      stepTimeline.from(coinWrap, {
+        opacity: 0,
+        x: direction * 70,
+        duration: 0.78,
+        ease: 'power3.out'
+      }, 0.08);
+
+      stepTimeline.from(coin, {
+        scale: 0.4,
+        rotation: direction * 24,
+        y: 28,
+        duration: 1.05,
+        ease: 'back.out(1.7)',
+        transformOrigin: '50% 50%'
+      }, 0.08);
+    }
+  });
+
+  dynamicCards.forEach((card, index) => {
+    const direction = index % 2 === 0 ? 1 : -1;
+
+    gsap.from(card, {
+      opacity: 0,
+      y: 68,
+      rotateX: 9,
+      rotateZ: direction * 2.2,
+      scale: 0.94,
+      duration: 0.95,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: card,
+        start: 'top 84%',
+        toggleActions: 'play none none reverse'
+      }
+    });
+
+    const cardText = card.querySelectorAll('h2, p, button, label, input');
+    if (cardText.length) {
+      gsap.from(cardText, {
+        opacity: 0,
+        y: 22,
+        stagger: 0.06,
+        duration: 0.65,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: card,
+          start: 'top 80%',
+          toggleActions: 'play none none reverse'
+        }
+      });
+    }
+  });
 
   // Floating button visibility on scroll
   if (floatingBtn) {

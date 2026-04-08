@@ -52,7 +52,7 @@ html, body {
   margin-top: -1px;
   background:
     linear-gradient(180deg,
-      rgba(255, 255, 255, 0.95) 0%,
+      rgb(255, 255, 255) 0%,
       rgba(242, 245, 241, 0.7) 18%,
       rgba(131, 131, 131, 0.38) 52%,
       rgba(5, 5, 5, 1) 100%);
@@ -82,6 +82,23 @@ section {
   background-color: #050505;
   position: relative;
   padding-bottom: 100vh;
+}
+
+.process-intro {
+  padding-top: 3rem;
+}
+
+.process-kicker {
+  color: rgba(255, 255, 255, 0.62);
+  text-transform: uppercase;
+  letter-spacing: 0.34rem;
+  font-size: 0.78rem;
+}
+
+.process-heading {
+  text-wrap: balance;
+  max-width: 12ch;
+  margin: 0 auto;
 }
 
 /* Animated line styling */
@@ -122,6 +139,23 @@ section {
   will-change: transform, opacity;
   object-fit: cover;
   flex-shrink: 0;
+}
+
+.process-step {
+  position: relative;
+}
+
+.process-copy h2,
+.process-copy p,
+.process-intro h2,
+.process-intro p {
+  will-change: transform, opacity;
+}
+
+.process-coin-wrap,
+.dynamic-card {
+  will-change: transform, opacity;
+  transform-style: preserve-3d;
 }
 
 @media (max-width: 992px) {
@@ -182,6 +216,24 @@ section {
     width: 180px;
     height: 180px;
   }
+
+  #ss {
+    margin-top: -26px;
+    padding-top: 26px;
+  }
+
+  .gradient-row {
+    height: 126px;
+  }
+
+  .process-intro {
+    padding-top: 2.2rem;
+  }
+
+  .process-kicker {
+    letter-spacing: 0.24rem;
+    font-size: 0.72rem;
+  }
 }
 
 /* espacios */
@@ -195,8 +247,12 @@ section {
 
 @media (max-width: 768px) {
   .espacio-grande {
-    height: 3s0vh;
+    height: 30vh;
   }
+}
+
+.espacio-grande-inicial {
+  height: 24vh;
 }
 
 /* inputs */
