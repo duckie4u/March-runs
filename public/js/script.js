@@ -13,16 +13,17 @@ document.querySelectorAll('.referidos-card-image').forEach(container => {
 });
 
 const videos = document.querySelectorAll("video");
+const gradientRow = document.querySelector('.gradient-row');
 
 videos.forEach(video => {
   video.addEventListener("ended", () => {
-
+    const isMobileViewport = window.matchMedia('(max-width: 767.98px)').matches;
     const scrollPc = document.getElementById("scrollDownPc");
     const scrollMovil = document.getElementById("scrollDownMovil");
 
-    if (scrollPc) scrollPc.classList.add("scroll-visible");
-    if (scrollMovil) scrollMovil.classList.add("scroll-visible");
-    if (scrollMovil) scrollMovil.classList.add("gradient-row.visible");
+    if (scrollPc && !isMobileViewport) scrollPc.classList.add("scroll-visible");
+    if (scrollMovil && isMobileViewport) scrollMovil.classList.add("scroll-visible");
+    if (gradientRow && isMobileViewport) gradientRow.classList.add("visible");
   });
 });
 
@@ -35,6 +36,8 @@ window.addEventListener('load', () => {
   const logoFinal = document.querySelector('#logoFinal');
   const procesoSection = document.querySelector('#proceso');
   const floatingBtn = document.querySelector('.btn-flotante-directo');
+  const baseLogoSrc = logoFinal?.getAttribute('src') || '';
+  const alternateLogoSrc = baseLogoSrc.replace('coin-logo.png', 'coin-logo-alt.png');
 
   if (animatedLine && procesoSection) {
     console.log("✓ Línea animada encontrada");
@@ -53,15 +56,14 @@ window.addEventListener('load', () => {
           if (logoFinal && self.progress >= 0.5) {
             if (!logoFinal.dataset.alternateActive) {
               console.log("Logo swapped to alternate");
-              const originalSrc = logoFinal.src;
-              const alternateSrc = originalSrc.replace('coin-logo.png', 'coin-logo-alt.png');
               
               // Fade out
               gsap.to(logoFinal, {
                 opacity: 0,
                 duration: 0.3,
                 onComplete: () => {
-                  logoFinal.src = alternateSrc;
+                  logoFinal.src = alternateLogoSrc;
+                  logoFinal.classList.add('is-alt-logo');
                   // Fade in
                   gsap.to(logoFinal, {
                     opacity: 1,
@@ -74,15 +76,14 @@ window.addEventListener('load', () => {
             }
           } else if (logoFinal && logoFinal.dataset.alternateActive === 'true') {
             console.log("Logo swapped back to original");
-            const originalSrc = logoFinal.src;
-            const baseSrc = originalSrc.replace('coin-logo-alt.png', 'coin-logo.png');
             
             // Fade out
             gsap.to(logoFinal, {
               opacity: 0,
               duration: 0.3,
               onComplete: () => {
-                logoFinal.src = baseSrc;
+                logoFinal.src = baseLogoSrc;
+                logoFinal.classList.remove('is-alt-logo');
                 // Fade in
                 gsap.to(logoFinal, {
                   opacity: 1,

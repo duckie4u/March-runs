@@ -14,30 +14,63 @@ html, body {
 #scrollDownMovil {
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.6s ease ;
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
+
+#scrollDownMovil {
+  bottom: 0 !important;
+  margin-bottom: 0 !important;
+  line-height: 0;
+  transform: translateX(-50%) translateY(18px) !important;
+  transform-origin: center bottom;
+  z-index: 3;
+}
+
 #scrollDownMovil img {
   width: 100vw;
   height: auto;
   display: block;
-  
 }
+
 .scroll-visible {
   opacity: 1 !important;
   pointer-events: auto;
+}
+
+#scrollDownMovil.scroll-visible {
+  transform: translateX(-50%) translateY(0) !important;
+}
+
+#ss {
+  background-color: #050505;
 }
 
 .gradient-row {
   width: 100%;
   height: 120px;
   opacity: 0;
+  margin-top: -1px;
+  background:
+    linear-gradient(180deg,
+      rgba(255, 255, 255, 0.95) 0%,
+      rgba(242, 245, 241, 0.7) 18%,
+      rgba(131, 131, 131, 0.38) 52%,
+      rgba(5, 5, 5, 1) 100%);
+  transform: translateY(-18px);
+  transform-origin: top center;
+  pointer-events: none;
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
+
 .gradient-row.visible {
-  width: 100%;
-  height: 120px;
   opacity: 1;
-  transition: opacity 0.6s ease ;
-  background: linear-gradient(to bottom, white, black) !important;
+  transform: translateY(0);
+}
+
+@media (min-width: 768px) {
+  .gradient-row {
+    display: none;
+  }
 }
 
 section {
@@ -64,9 +97,20 @@ section {
   filter: drop-shadow(0 0 8px rgba(121, 121, 121, 0.6)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.3));
 }
 
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(10px); }
+@keyframes scrollCuePulse {
+  0%, 100% {
+    opacity: 1;
+    filter: drop-shadow(0 0 0 rgba(255, 255, 255, 0.18));
+  }
+  50% {
+    opacity: 0.82;
+    filter: drop-shadow(0 0 16px rgba(255, 255, 255, 0.28));
+  }
+}
+
+#scrollDownMovil.scroll-visible img,
+.gradient-row.visible {
+  animation: scrollCuePulse 2.6s ease-in-out infinite;
 }
 
 /* 🔥 IMPORTANTE: quitamos animación */
@@ -106,10 +150,23 @@ section {
   padding: 40px 20px;
 }
 
+.logo-final-frame {
+  min-height: 250px;
+  align-items: center;
+}
+
 .logo-final {
-  max-width: 300px !important;
-  width: auto !important;
-  height: auto !important;
+  width: 250px;
+  height: 250px;
+  max-width: 90%;
+  object-fit: contain;
+  transform-origin: center center;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  will-change: transform, opacity;
+}
+
+.logo-final.is-alt-logo {
+  transform: scale(0.58);
 }
 
 @media (max-width: 768px) {
@@ -117,8 +174,13 @@ section {
     padding: 30px 15px;
   }
 
+  .logo-final-frame {
+    min-height: 180px;
+  }
+
   .logo-final {
-    max-width: 200px !important;
+    width: 180px;
+    height: 180px;
   }
 }
 
@@ -346,17 +408,50 @@ section {
   pointer-events: auto;
 }
 
-/* Logo final section styling */
-.logo-final {
-  width: 250px;
-  height: 250px;
-  max-width: 90%;
-  object-fit: contain;
+.btn-flotante-content {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  transform-origin: center center;
+}
+
+.btn-flotante-directo.visible .btn-flotante-content {
+  animation: contactTilt 6.5s ease-in-out 2s infinite;
+}
+
+.btn-flotante-directo:hover {
+  box-shadow: 0 10px 28px rgba(255, 255, 255, 0.34), inset 0 2px 5px rgba(255, 255, 255, 0.5);
+}
+
+.btn-flotante-directo:hover .btn-flotante-content {
+  animation-play-state: paused;
+}
+
+@keyframes contactTilt {
+  0%, 82%, 100% {
+    transform: rotate(0deg);
+  }
+  85% {
+    transform: rotate(-5deg);
+  }
+  88% {
+    transform: rotate(4deg);
+  }
+  91% {
+    transform: rotate(-3deg);
+  }
+  94% {
+    transform: rotate(2deg);
+  }
+  97% {
+    transform: rotate(0deg);
+  }
 }
 
 @media (max-width: 768px) {
-  .logo-final {
-    width: 180px;
-    height: 180px;
+  .btn-flotante-directo {
+    right: 18px;
+    bottom: 18px;
+    padding: 12px 20px;
   }
 }
