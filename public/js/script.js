@@ -36,8 +36,32 @@ window.addEventListener('load', () => {
   const logoFinal = document.querySelector('#logoFinal');
   const procesoSection = document.querySelector('#proceso');
   const floatingBtn = document.querySelector('.btn-flotante-directo');
+  const floatingBtnContent = floatingBtn?.querySelector('.btn-flotante-content');
   const baseLogoSrc = logoFinal?.getAttribute('src') || '';
   const alternateLogoSrc = baseLogoSrc.replace('coin-logo.png', 'coin-logo-alt.png');
+  let floatingBtnTiltInterval;
+
+  const triggerFloatingBtnTilt = () => {
+    if (!floatingBtnContent) return;
+    floatingBtnContent.classList.remove('is-tilting');
+    void floatingBtnContent.offsetWidth;
+    floatingBtnContent.classList.add('is-tilting');
+  };
+
+  const startFloatingBtnAttention = () => {
+    if (!floatingBtn) return;
+    floatingBtn.classList.add('visible');
+    triggerFloatingBtnTilt();
+    clearInterval(floatingBtnTiltInterval);
+    floatingBtnTiltInterval = window.setInterval(triggerFloatingBtnTilt, 4500);
+  };
+
+  const stopFloatingBtnAttention = () => {
+    if (!floatingBtn) return;
+    floatingBtn.classList.remove('visible');
+    clearInterval(floatingBtnTiltInterval);
+    floatingBtnContent?.classList.remove('is-tilting');
+  };
 
   if (animatedLine && procesoSection) {
     console.log("✓ Línea animada encontrada");
@@ -104,12 +128,9 @@ window.addEventListener('load', () => {
     ScrollTrigger.create({
       trigger: '#proceso',
       start: 'top center',
-      onEnter: () => {
-        floatingBtn.classList.add('visible');
-      },
-      onLeaveBack: () => {
-        floatingBtn.classList.remove('visible');
-      }
+      onEnter: startFloatingBtnAttention,
+      onEnterBack: startFloatingBtnAttention,
+      onLeaveBack: stopFloatingBtnAttention
     });
   }
 

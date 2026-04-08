@@ -415,8 +415,8 @@ section {
   transform-origin: center center;
 }
 
-.btn-flotante-directo.visible .btn-flotante-content {
-  animation: contactTilt 6.5s ease-in-out 2s infinite;
+.btn-flotante-content.is-tilting {
+  animation: contactTiltBurst 1.4s ease-in-out;
 }
 
 .btn-flotante-directo:hover {
@@ -427,24 +427,33 @@ section {
   animation-play-state: paused;
 }
 
-@keyframes contactTilt {
-  0%, 82%, 100% {
+@keyframes contactTiltBurst {
+  0%, 18%, 46%, 64%, 100% {
     transform: rotate(0deg);
   }
-  85% {
+  8% {
     transform: rotate(-5deg);
   }
-  88% {
+  14% {
     transform: rotate(4deg);
   }
-  91% {
+  22% {
     transform: rotate(-3deg);
   }
-  94% {
+  28% {
     transform: rotate(2deg);
   }
-  97% {
-    transform: rotate(0deg);
+  54% {
+    transform: rotate(-5deg);
+  }
+  60% {
+    transform: rotate(4deg);
+  }
+  68% {
+    transform: rotate(-3deg);
+  }
+  74% {
+    transform: rotate(2deg);
   }
 }
 
