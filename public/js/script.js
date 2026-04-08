@@ -12,6 +12,20 @@ document.querySelectorAll('.referidos-card-image').forEach(container => {
   }
 });
 
+const videos = document.querySelectorAll("video");
+
+videos.forEach(video => {
+  video.addEventListener("ended", () => {
+
+    const scrollPc = document.getElementById("scrollDownPc");
+    const scrollMovil = document.getElementById("scrollDownMovil");
+
+    if (scrollPc) scrollPc.classList.add("scroll-visible");
+    if (scrollMovil) scrollMovil.classList.add("scroll-visible");
+    if (scrollMovil) scrollMovil.classList.add("gradient-row.visible");
+  });
+});
+
 // ! ================ ANIMACIONES GSAP ================
 
 gsap.registerPlugin(ScrollTrigger);

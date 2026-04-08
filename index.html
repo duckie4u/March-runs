@@ -21,7 +21,7 @@
                 <source src="public/assets/video-inicial-pc.mp4" type="video/mp4">
             </video>
             <div id="scrollDownPc" class="position-absolute bottom-0 start-50 translate-middle-x mb-3">
-                <img src="public/assets/scroll-down.svg" alt="Scroll Down" width="40" height="40">
+                <img src="public/assets/scroll-down.svg" alt="Scroll Down" width="60" height="60">
             </div>
         </div>
 
@@ -30,18 +30,19 @@
                 <source src="public/assets/video-inicial-mobile.mp4" type="video/mp4">
             </video>
             <div id="scrollDownMovil" class="position-absolute bottom-0 start-50 translate-middle-x mb-3">
-                <img src="public/assets/scroll-down.svg" alt="Scroll Down" width="40" height="40">
+                <img src="public/assets/scroll-floor.svg" alt="Scroll Down">
             </div>
         </div>
     </header>
-
+    
     <section id="proceso" class="scroll-animation-section position-relative">
+        <div class="gradient-row"></div>
         <!-- Animated vertical line -->
         <svg class="animated-line-container" viewBox="0 0 2 3000" preserveAspectRatio="xMidYMid meet">
             <defs>
                 <linearGradient id="lineGradient" x1="0%" y1="0%" x2="0%" y2="100%">
                     <stop offset="0%" style="stop-color:#0000009a;stop-opacity:1" />
-                    <stop offset="80%" style="stop-color:#4b6144;stop-opacity:0.9" />
+                    <stop offset="90%" style="stop-color:#4b6144;stop-opacity:0.9" />
                     <stop offset="100%" style="stop-color:#000000dc;stop-opacity:0.6" />
                 </linearGradient>
                 <filter id="lineGlow">
@@ -57,7 +58,7 @@
                 filter="url(#lineGlow)"/>
         </svg>
 
-        <div class="row"><div class="col-12 espacio-inferior"></div></div>
+        <div class="row"><div class="col-12 espacio-grande"></div></div>
 
         <div class="container-fluid position-relative" style="z-index: 3;">
             
@@ -77,6 +78,9 @@
                 </div>  
 
             </div>
+
+            <div class="row"><div class="col-12 espacio-grande"></div></div>
+
             <div class="row g-4 align-items-center px-4 px-md-5">
 
                 <!-- IMAGEN -->
@@ -94,7 +98,7 @@
 
             </div>
 
-            <div class="row g-4 align-items-center px-4 px-md-5">
+            <div class="row"><div class="col-12 espacio-grande"></div></div>
             
             <div class="row g-4 align-items-center px-4 px-md-5">
                 
@@ -111,29 +115,17 @@
                 </div>  
             </div>
 
-        <div class="row"><div class="col-12 espacio-inferior"></div></div>
-        
-            <div class="row logo-section g-4 align-items-center px-4 px-md-5 text-center">
-                <div class="col-12 d-flex justify-content-center">
+            <div class="row"><div class="col-12 espacio-grande"></div></div>
+            <div class="logo-final-section position-absolute start-50 translate-middle-x" style="width: 100%; text-align: center; z-index: 4;">
+                <div class="d-flex justify-content-center mb-4">
                     <img id="logoFinal" src="public/assets/coin-logo.png" alt="Coin Logo" class="img-fluid coin-logo logo-final">
                 </div> 
-            </div>
-
-            <div class="row align-items-center px-4 px-md-5 text-center">
-                <div class="col-12">
-                    <h2 class="text-light display-6 fw-bold">Instala con Inpartners</h2>
-                    <p class="text-light fs-5">El éxito de tu instalación es nuestro éxito. Únete a nuestra comunidad de emprendedores.</p>
-                </div>
+                <h2 class="text-light display-6 fw-bold">Instala con Inpartners</h2>
+                <p class="text-light fs-5">El éxito de tu instalación es nuestro éxito. Únete a nuestra comunidad de emprendedores.</p>
             </div>
             
-            <div class="row"><div class="col-12 espacio-inferior"></div></div>
         </div>
-                
-        <div class="espacio-inferior"></div> 
-    </section>
-
-    <div class="w-100" style="background-color: #050505;">
-    </div>
+        </section>
 
     <section id="referidos1" class="referidos-section py-5 py-md-6">
         <div class="container-fluid px-3 px-md-4 px-lg-5">
@@ -169,6 +161,7 @@
     </section>
 
     <section id="contacto" class="py-5 py-md-6 position-relative">
+        <div class="row"><div class="col-12 espacio-inferior"></div></div>
         <div class="container-fluid px-4 px-md-5">
             <!-- Encabezado -->
             <div class="row mb-5 mb-md-6">
@@ -208,11 +201,6 @@
                                         <input type="tel" name="telefono" class="form-control custom-input" id="telefono" placeholder="+57 300 000 0000" required>
                                     </div>
 
-                                    <div class="col-12">
-                                        <label for="correo" class="form-label text-light fw-semibold mb-2">Correo Electrónico</label>
-                                        <input type="email" name="email" class="form-control custom-input" id="correo" placeholder="correo@ejemplo.com" required>
-                                    </div>
-
                                     <div class="col-12 mt-4">
                                         <button type="submit" id="btnEnviar" class="btn btn-metallic w-100 fw-bold fs-5 py-2">
                                             Enviar
@@ -226,8 +214,9 @@
             </div>
         </div>
     </section>
-
+    
     <section id="referidos2" class="referidos-section py-5 py-md-6">
+        <div class="row"><div class="col-12 espacio-inferior"></div></div>
         <div class="container-fluid px-3 px-md-4 px-lg-5">
             <div class="row g-2 g-sm-3 g-md-4 align-items-stretch">
                 
