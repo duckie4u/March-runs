@@ -20,16 +20,34 @@ html, body {
 #scrollDownMovil {
   bottom: 0 !important;
   margin-bottom: 0 !important;
+  width: 100vw;
+  overflow: hidden;
   line-height: 0;
   transform: translateX(-50%) translateY(18px) !important;
   transform-origin: center bottom;
   z-index: 3;
 }
 
-#scrollDownMovil img {
+#scrollDownMovil .scroll-floor-art {
   width: 100vw;
   height: auto;
   display: block;
+  position: relative;
+  z-index: 1;
+}
+
+#scrollDownMovil .swipe-mobile-art {
+  position: absolute;
+  left: 50%;
+  bottom: 28px;
+  width: min(56vw, 300px);
+  height: auto;
+  opacity: 0;
+  transform: translateX(-50%) translateY(18px) scale(0.98);
+  transform-origin: center bottom;
+  z-index: 2;
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.22));
+  pointer-events: none;
 }
 
 .scroll-visible {
@@ -47,16 +65,18 @@ html, body {
 
 .gradient-row {
   width: 100%;
-  height: 120px;
+  height: 132px;
   opacity: 0;
   margin-top: -1px;
   background:
     linear-gradient(180deg,
-      rgb(255, 255, 255) 0%,
-      rgba(242, 245, 241, 0.7) 18%,
-      rgba(131, 131, 131, 0.38) 52%,
+      #ffffff 0%,
+      #ffffff 22%,
+      rgba(255, 255, 255, 0.96) 36%,
+      rgba(230, 230, 230, 0.76) 56%,
+      rgba(164, 164, 164, 0.4) 74%,
       rgba(5, 5, 5, 1) 100%);
-  transform: translateY(-18px);
+  transform: translateY(-14px);
   transform-origin: top center;
   pointer-events: none;
   transition: opacity 0.6s ease, transform 0.6s ease;
@@ -125,9 +145,52 @@ section {
   }
 }
 
-#scrollDownMovil.scroll-visible img,
+#scrollDownMovil.scroll-visible .scroll-floor-art,
 .gradient-row.visible {
   animation: scrollCuePulse 2.6s ease-in-out infinite;
+}
+
+@keyframes swipeGlideTriple {
+  0%, 6% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(22px) scale(0.97);
+  }
+  13%, 20% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(6px) scale(1);
+  }
+  28% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-18px) scale(1.02);
+  }
+  34%, 40% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(22px) scale(0.97);
+  }
+  47%, 54% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(6px) scale(1);
+  }
+  62% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-18px) scale(1.02);
+  }
+  68%, 74% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(22px) scale(0.97);
+  }
+  81%, 88% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(6px) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-18px) scale(1.02);
+  }
+}
+
+#scrollDownMovil.scroll-visible .swipe-mobile-art {
+  animation: swipeGlideTriple 4.8s ease-out infinite;
 }
 
 /* 🔥 IMPORTANTE: quitamos animación */
@@ -171,6 +234,11 @@ section {
     width: 110px;
     height: 110px;
     max-width: 45%;
+  }
+
+  #scrollDownMovil .swipe-mobile-art {
+    width: min(60vw, 250px);
+    bottom: 20px;
   }
 }
 
